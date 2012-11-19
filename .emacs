@@ -62,9 +62,10 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 
-;;Theming
+;;Theming -- Reqires emacs 24 so don't run on linux yet
+(when runningWindows
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'railscast t)
+(load-theme 'railscast t))
 
 ;;Orgmode awesomeness
 (add-to-list 'load-path "~/.emacs.d/plugins/org-7.8.11")
@@ -117,7 +118,8 @@
 	(message "Session not saved."))
     (desktop-save-in-desktop-dir)))
 
-(add-hook 'after-init-hook  (session-restore))
+(when runningWindows
+(add-hook 'after-init-hook  (session-restore)))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup Aspell in windows to work with Emacs
 (when runningWindows
