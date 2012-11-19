@@ -1,0 +1,9 @@
+[user]
+	name = Hammad Khalid
+	email = hammad.kd@gmail.com
+
+# Ignore Custom dictionary #
+emacs-desktop
+auto-save-list/
+backups/
+ispellCustomDictionary/
