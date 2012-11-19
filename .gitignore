@@ -1,7 +1,3 @@
-[user]
-	name = Hammad Khalid
-	email = hammad.kd@gmail.com
-
 # Ignore Custom dictionary #
 /.emacs.d/emacs-desktop
 /.emacs.d/.emacs.desktop.lock
