@@ -24,10 +24,9 @@
 (transient-mark-mode 1) ;; No region when it is not highlighted
 (setq cua-keep-region-after-copy t) ;; Standard Windows behaviour
 (setq x-select-enable-clipboard t)
-(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
 ;;Hide the toolbar, leave the menu bar for now
-(tool-bar-mode nil)
+(tool-bar-mode -1)
 (menu-bar-mode -1)
 
 ;;Display line number and column numbers
@@ -63,11 +62,9 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t)
 
-;;Theming pluging
-(add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-railscasts)
+;;Theming
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'railscast t)
 
 ;;Orgmode awesomeness
 (add-to-list 'load-path "~/.emacs.d/plugins/org-7.8.11")
@@ -89,7 +86,7 @@
       '("emacs - " (buffer-file-name "%f"
                                      (dired-directory dired-directory "%b"))))
 
-;;Close the buffer with Ctrl-S-w
+;;Close the buffer with Ctrl-w
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -161,7 +158,7 @@
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-;;This is for removing the select copying
+;;This is for removing the copying feature when text is selected
 (setq mouse-drag-copy-region nil)
 
 ;; source: http://steve.yegge.googlepages.com/my-dot-emacs-file
@@ -227,4 +224,3 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1")
 (require 'auto-complete)
 (global-auto-complete-mode t))
-
