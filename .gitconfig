@@ -3,7 +3,8 @@
 	email = hammad.kd@gmail.com
 
 # Ignore Custom dictionary #
-emacs-desktop
-auto-save-list/
-backups/
-ispellCustomDictionary/
+/.emacs.d/emacs-desktop
+/.emacs.d/.emacs.desktop.lock
+/.emacs.d/auto-save-list/*
+/.emacs.d/backups/*
+/.emacs.d/plugins/ispellCustomDictionary/*
