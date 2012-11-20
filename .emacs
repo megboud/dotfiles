@@ -90,7 +90,6 @@
 ;;Close the buffer with Ctrl-w
 (global-set-key (kbd "C-w") 'kill-this-buffer)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; use only one desktop
 (setq desktop-path '("~/.emacs.d/"))
 (setq desktop-dirname "~/.emacs.d/")
@@ -120,7 +119,7 @@
 
 (when runningWindows
 (add-hook 'after-init-hook  (session-restore)))
-;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;; Setup Aspell in windows to work with Emacs
 (when runningWindows
 (setq-default ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe")
@@ -142,18 +141,14 @@
 (global-set-key (kbd "M-<f8>") 'flyspell-check-next-highlighted-word)
 
 ;; Enable fly-spell to work with text files and prof fly spell to work on comments
-;;(add-hook 'message-mode-hook 'turn-on-flyspell)
-;;(add-hook 'text-mode-hook 'turn-on-flyspell)
 (add-hook 'org-mode-hook 'turn-on-flyspell)
-;;(add-hook 'c-mode-common-hook 'flyspell-prog-mode)
-;;(add-hook 'tcl-mode-hook 'flyspell-prog-mode)
 (defun turn-on-flyspell ()
   "Force flyspell-mode on using a positive arg.  For use in hooks."
   (interactive)
   (flyspell-mode 1))
 
-;;GotoLine
-(global-set-key (kbd "M-l") 'goto-line);[Alt]-[L]
+;;GotoLine [Alt]-[L]
+(global-set-key (kbd "M-l") 'goto-line)
 
 ;; UTF-8 goodness
 (set-terminal-coding-system 'utf-8)
@@ -185,6 +180,7 @@
 
 (global-unset-key (kbd "<mouse-2>"))
 
+;; Acts as Meta-x
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 
 ;; Setup Duplication line fucntion
@@ -226,3 +222,37 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete-1.3.1")
 (require 'auto-complete)
 (global-auto-complete-mode t))
+
+;;Ctrl-Tab through buffers like a browser
+(global-set-key (kbd "C-<tab>") 'bury-buffer)
+(global-set-key (kbd "C-S-<tab>") 'unbury-buffer)
+
+;;Comment or uncomment region like eclipse
+(defun comment-or-uncomment-region-or-line ()
+    "Comments or uncomments the region or the current line if there's no active region."
+    (interactive)
+    (let (beg end)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (comment-or-uncomment-region beg end)))
+
+(global-set-key (kbd "C-?") 'comment-or-uncomment-region-or-line)
+
+;;Unindent like eclipse
+(defun indent-line-or-region ()
+  (interactive)
+  (if mark-active
+(increase-left-margin (region-beginning) (region-end) nil)
+    (increase-left-margin (point-at-bol) (point-at-eol) nil))
+  (setq deactivate-mark nil))
+
+(defun unindent-line-or-region ()
+  (interactive)
+  (if mark-active
+(decrease-left-margin (region-beginning) (region-end) nil)
+    (decrease-left-margin (point-at-bol) (point-at-eol) nil))
+  (setq deactivate-mark nil))
+
+(global-set-key (kbd "<tab>") 'indent-line-or-region)
+(global-set-key (kbd "S-<tab>") 'unindent-line-or-region)
