@@ -78,6 +78,8 @@
 ;Fix the settings for the tab character
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+(setq indent-line-function 'insert-tab)
+(setq-default c-basic-offset 4)
 
 ;;Turn on Word wrap
 (global-visual-line-mode t)
@@ -254,5 +256,49 @@
     (decrease-left-margin (point-at-bol) (point-at-eol) nil))
   (setq deactivate-mark nil))
 
-(global-set-key (kbd "<tab>") 'indent-line-or-region)
+;;(global-set-key (kbd "C->") 'indent-line-or-region)
 (global-set-key (kbd "S-<tab>") 'unindent-line-or-region)
+
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+;;Move lines up and down with alt up/down
+(global-set-key (kbd "<M-up>") 'move-line-up)
+(global-set-key (kbd "<M-down>") 'move-line-down)
+
+;;Reverts all of the buffers currently open
+(defun revert-all-buffers ()
+    "Refreshes all open buffers from their respective files."
+    (interactive)
+    (dolist (buf (buffer-list))
+      (with-current-buffer buf
+        (when (and (buffer-file-name) (not (buffer-modified-p)))
+          (revert-buffer t t t) )))
+    (message "Refreshed open files.") )
+(put 'downcase-region 'disabled nil)
+
+;; Undo close buffer
+(defun undo-kill-buffer (arg)
+  "Re-open the last buffer killed.  With ARG, re-open the nth buffer."
+  (interactive "p")
+  (let ((recently-killed-list (copy-sequence recentf-list))
+	 (buffer-files-list
+	  (delq nil (mapcar (lambda (buf)
+			      (when (buffer-file-name buf)
+				(expand-file-name (buffer-file-name buf)))) (buffer-list)))))
+    (mapc
+     (lambda (buf-file)
+       (setq recently-killed-list
+	     (delq buf-file recently-killed-list)))
+     buffer-files-list)
+    (find-file
+     (if arg (nth arg recently-killed-list)
+       (car recently-killed-list)))))

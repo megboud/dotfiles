@@ -23,7 +23,7 @@
  '(font-lock-warning-face ((t (:foreground "#cd6889" :weight bold))))
  '(isearch ((t (:background "#555555" :foreground "#b0e2ff"))))
  '(lazy-highlight ((t (:background "#556b2f"))))
- '(link ((t (:foreground "#0000ff" :underline t))))
+ '(link ((t (:foreground "#0080FF" :underline -1))))
  '(link-visited ((t (:foreground "#8b008b" :underline t))))
  '(button ((t (:underline t))))
  '(header-line ((t (:background "#5a647e" :foreground "#e6e1de")))))
