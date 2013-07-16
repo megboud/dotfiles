@@ -1,6 +1,7 @@
 # Ignore Custom dictionary #
 /.emacs.d/emacs-desktop
 /.emacs.d/.emacs.desktop.lock
+/.emacs.d/ac-comphist.dat
 /.emacs.d/auto-save-list/*
 /.emacs.d/backups/*
 /.emacs.d/plugins/ispellCustomDictionary/*
