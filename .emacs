@@ -106,10 +106,11 @@
         (message "Session not saved."))
     (desktop-save-in-desktop-dir)))
 
-(add-hook 'after-init-hook  (session-restore))
+(if runningWindows
+(add-hook 'after-init-hook  (session-restore)))
 
 ;; Setup Aspell in windows to work with Emacs
-(when runningWindows
+(if runningWindows
   (setq-default ispell-program-name "C:/Program Files (x86)/Aspell/bin/aspell.exe")
   (add-to-list 'exec-path "C:/Program Files (x86)/Aspell/bin/")
   (setq ispell-program-name "aspell"))
@@ -213,7 +214,7 @@
 (setq auto-mode-alist (cons '("GemFile.*" . ruby-mode) auto-mode-alist))
 
 ;; Auctex stuff when running windows
-(when runningWindows
+(if runningWindows
   (setq-default TeX-master nil)
   (setq reftex-plug-into-AUCTeX t)
   (load "auctex.el" nil t t)
@@ -307,7 +308,7 @@
     (while (search-forward "\n" nil t) (replace-match " " nil t))))
 
 ; Opens the folder of the current directory
-(when runningWindows
+(if runningWindows
   (defun open-folder ()
     "Launch the windows explorer in the current directory and selects current file"
     (interactive)
@@ -317,7 +318,7 @@
      (concat "/e,/select," (convert-standard-filename buffer-file-name)))))
 
 ;; Remove auto version control in windows because it slows it down
-(when runningWindows
+(if runningWindows
   (remove-hook 'find-file-hooks 'vc-find-file-hook))
 
 ;; Auto pair for brackets
