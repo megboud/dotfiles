@@ -58,8 +58,8 @@ noremap <Leader>tt :NERDTreeClose<cr>
 " Colorscheme settings.
 syntax enable
 set t_Co=256
-set background=light
-colorscheme molokai
+set background=dark
+colorscheme base16-tomorrow
 
 if has("gui_running")
   if has("gui_gtk2")
