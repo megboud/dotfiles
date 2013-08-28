@@ -9,15 +9,17 @@ execute pathogen#infect()
 filetype plugin indent on
 
 cd ~/Dropbox
+set autochdir
 set spellfile=$HOME/Dropbox/Misc/spell/mySpellFile.en.utf-8.add
 
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 
-imap <Tab> <C-P>
+imap <Tab> <C-c>
 map <F3> :source ~/.vim/todo_and_logs_sessions.vim <cr>
-:nnoremap <F4> "=strftime("%m/%d/%y %H:%M%p")<CR>
-:inoremap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
+nnoremap <F4> "=strftime("%m/%d/%y %H:%M%p")<CR>
+inoremap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
+inoremap jk <esc> 
 
 " No swap files and other basic settings
 set backupdir=~/.vimfiles/tmp,.
@@ -85,8 +87,8 @@ augroup CursorLine
 augroup END
 
 " Tame searching / moving
-nnoremap / /\v
-vnoremap / /\v
+noremap / /\vC
+noremap / /\v
 set ignorecase
 set smartcase
 set gdefault
