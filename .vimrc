@@ -10,16 +10,17 @@ filetype plugin indent on
 
 cd ~/Dropbox
 set autochdir
-set spellfile=$HOME/Dropbox/Misc/spell/mySpellFile.en.utf-8.add
+set spellfile=$HOME/.vim/spell/mySpellFile.en.utf-8.add
 
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 
-imap <Tab> <C-c>
+imap <Tab> <C-p>
 map <F3> :source ~/.vim/todo_and_logs_sessions.vim <cr>
 nnoremap <F4> "=strftime("%m/%d/%y %H:%M%p")<CR>
 inoremap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
 inoremap jk <esc> 
+cno jk <C-c>
 
 " No swap files and other basic settings
 set backupdir=~/.vimfiles/tmp,.
