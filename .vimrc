@@ -1,4 +1,4 @@
-" Use vim defaults 
+" Use vim defaults
 set encoding=utf8
 set nocompatible
 filetype plugin indent on
@@ -8,32 +8,45 @@ set runtimepath+=~/.vim
 execute pathogen#infect()
 filetype plugin indent on
 
-cd ~/Dropbox
+" Directory Settings and custom spell check dictionary
+cd ~
 set autochdir
-set spellfile=$HOME/.vim/spell/mySpellFile.en.utf-8.add
+set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
+map <F3> :source ~/.vim/todo_and_logs_sessions.vim <cr>
 
+" Remove the menu bar and tool bar from GVim
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 
+" Custom keyboard shortcuts
 imap <Tab> <C-p>
-map <F3> :source ~/.vim/todo_and_logs_sessions.vim <cr>
 nnoremap <F4> "=strftime("%m/%d/%y %H:%M%p")<CR>
 inoremap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
-inoremap jk <esc> 
+inoremap jk <esc>
 cno jk <C-c>
+vmap jk <C-c>
+cmap jk <C-c>
+" Control-backspace should delete word in normal mode
+imap <C-BS> <c-w>
+" Eclipse shortcut for comment, uses Vim-commentary
+nmap <C-\> gcc
+vmap <C-\> gcc
 
 " No swap files and other basic settings
 set backupdir=~/.vimfiles/tmp,.
 set directory=~/.vimfiles/tmp,.
 set nobackup
+set clipboard=unnamed " Share the clipboard with windows
 set noswapfile
 set spell
 set scrolloff=3
 set autoindent
-set complete-=1
+set complete-=i
 set smarttab
 set showmode
+set nrformats-=octal
 set showcmd
+set shiftround
 set hidden
 set wildmenu
 set wildmode=list:longest
@@ -47,8 +60,11 @@ set tabstop=2 shiftwidth=2
 set number " Numbered lines.
 set modelines=0 " Prevent security exploits having to do with modelines
 set mouse=n " Mouse usage enabled in normal mode.
-set ttymouse=xterm2c " Set xterm2 mouse mode to allow resizing of splits with mouse inside Tmux.
 set so=14 " Keep cursor away from edges of screen.
+set display+=lastline
+
+set ttimeout
+set ttimeoutlen=50
 
 " Change buffers using CtrlP with the ; key
 :nmap <Leader>b :CtrlPBuffer<CR>
@@ -62,7 +78,7 @@ noremap <Leader>tt :NERDTreeClose<cr>
 syntax enable
 set t_Co=256
 set background=dark
-colorscheme base16-tomorrow
+colorscheme tomorrow
 
 if has("gui_running")
   if has("gui_gtk2")
@@ -72,13 +88,12 @@ if has("gui_running")
   endif
 endif
 
-" Make trailing whitespace annoyingly highlighted.
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+if &listchars ==# 'eol:$'
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
+  let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
+  endif
+endif
 
 " Highlight cursor line.
 augroup CursorLine
@@ -88,14 +103,16 @@ augroup CursorLine
 augroup END
 
 " Tame searching / moving
-noremap / /\vC
-noremap / /\v
 set ignorecase
 set smartcase
 set gdefault
 set incsearch
 set showmatch
+" Use <C-L> to clear the highlighting of :set hlsearch.
 set hlsearch
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
 
 " Handle long lines correctly
 set wrap
