@@ -1,27 +1,28 @@
-" Use vim defaults
-set encoding=utf8
-set nocompatible
-filetype plugin indent on
-
 "  Load ~/.vim/bundle packages.
 set runtimepath+=~/.vim
 execute pathogen#infect()
 filetype plugin indent on
 
+" Set vim defaults
+set encoding=utf8
+set nocompatible
+filetype plugin indent on
+nnoremap j gj
+nnoremap k gk
+:set guioptions-=m  "remove menu bar from GVIM
+:set guioptions-=T  "remove toolbar from GVIM
+
 " Directory Settings and custom spell check dictionary
 cd ~
 set autochdir
 set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
-map <F3> :source ~/.vim/todo_and_logs_sessions.vim <cr>
-
-" Remove the menu bar and tool bar from GVim
-:set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
+map <F3> :source ~/.vim/todo_and_research_session.vim <cr>
 
 " Custom keyboard shortcuts
 imap <Tab> <C-p>
-nnoremap <F4> "=strftime("%m/%d/%y %H:%M%p")<CR>
-inoremap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
+nmap <F4> a<C-R>=strftime("%m/%d/%y %H:%M%p")<CR><Esc>
+imap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
+" Use JK to go to normal mode
 inoremap jk <esc>
 cno jk <C-c>
 vmap jk <C-c>
@@ -36,8 +37,9 @@ vmap <C-\> gcc
 set backupdir=~/.vimfiles/tmp,.
 set directory=~/.vimfiles/tmp,.
 set nobackup
-set clipboard=unnamed " Share the clipboard with windows
 set noswapfile
+
+set clipboard=unnamed " Share the clipboard with windows
 set spell
 set scrolloff=3
 set autoindent
@@ -77,7 +79,6 @@ noremap <Leader>tt :NERDTreeClose<cr>
 " Colorscheme settings.
 syntax enable
 set t_Co=256
-set background=dark
 colorscheme tomorrow
 
 if has("gui_running")
@@ -120,14 +121,3 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 
-" No Arrows!
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
