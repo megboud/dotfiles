@@ -22,11 +22,6 @@ map <F3> :source ~/.vim/todo_and_research_session.vim <cr>
 imap <Tab> <C-p>
 nmap <F4> a<C-R>=strftime("%m/%d/%y %H:%M%p")<CR><Esc>
 imap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
-" Use JK to go to normal mode
-inoremap jk <esc>
-cno jk <C-c>
-vmap jk <C-c>
-cmap jk <C-c>
 " Control-backspace should delete word in normal mode
 imap <C-BS> <c-w>
 " Eclipse shortcut for comment, uses Vim-commentary
