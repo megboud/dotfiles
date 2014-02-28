@@ -1,5 +1,10 @@
 #!/bin/bash
-# I have called this script "windows" in my bin dir.
+# This script mimics the OSX "open" command for windows Cygwin 
+# Examples: 
+# "open .", opens windows explorer in current directory 
+# "open C:/Users/" opens the users directory 
+
+
 usage ()
 {
  echo "Open Windows Explorer"

@@ -1,7 +1,6 @@
 "  Load ~/.vim/bundle packages.
 set runtimepath+=~/.vim
 execute pathogen#infect()
-filetype plugin indent on
 
 " Set vim defaults
 set encoding=utf8
@@ -13,24 +12,15 @@ nnoremap k gk
 :set guioptions-=T  "remove toolbar from GVIM
 
 " Directory Settings and custom spell check dictionary
-cd ~
+" cd ~
 set autochdir
 set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
-map <F3> :source ~/.vim/todo_and_research_session.vim <cr>
 
-" Custom keyboard shortcuts
-imap <Tab> <C-p>
-nmap <F4> a<C-R>=strftime("%m/%d/%y %H:%M%p")<CR><Esc>
-imap <F4> <C-R>=strftime("%m/%d/%y %H:%M%p")<CR>
-" Control-backspace should delete word in normal mode
-imap <C-BS> <c-w>
-" Eclipse shortcut for comment, uses Vim-commentary
-nmap <C-\> gcc
-vmap <C-\> gcc
+" Toggle - comment, uses Vim-commentary
+nmap <C-\> gcc<ESC>
+vmap <C-\> gcc<ESC>
 
 " No swap files and other basic settings
-set backupdir=~/.vimfiles/tmp,.
-set directory=~/.vimfiles/tmp,.
 set nobackup
 set noswapfile
 
@@ -67,20 +57,32 @@ set ttimeoutlen=50
 :nmap <Leader>b :CtrlPBuffer<CR>
 :nmap <Leader>f :CtrlP<CR>
 
-" open Nerd Tree in folder of file in active buffer
-noremap <Leader>t :NERDTreeFind<cr>
-noremap <Leader>tt :NERDTreeClose<cr>
 
 " Colorscheme settings.
-syntax enable
+syntax on
 set t_Co=256
 colorscheme tomorrow
 
+" Font setting 
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 13
+    set guifont=Inconsolata\ 14
   elseif has("gui_win32")
-    set guifont=Consolas:h13:cANSI
+    set guifont=Consolas:h14:cANSI
+  else 
+    set guifont=Consolas:h14
+  endif
+endif
+
+" Autocomplete with Ctrl space
+if has("gui_running")
+    " C-Space seems to work under gVim on both Linux and win32
+    inoremap <C-Space> <C-n>
+else " no gui
+  if has("unix")
+    inoremap <Nul> <C-n>
+  else
+  " I have no idea of the name of Ctrl-Space elsewhere
   endif
 endif
 
@@ -116,3 +118,41 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 
+" ******************** Rename current file, via Gary Bernhardt
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'))
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+
+map <Leader>n :call RenameFile()<cr>
+
+" ******************** Execute file if we know how
+function! ExecuteFile(filename)
+  :w
+  :silent !clear
+  if match(a:filename, '\.rb$') != -1
+    exec ":!ruby " . a:filename
+  elseif match(a:filename, '\.js$') != -1
+    exec ":!node " . a:filename
+  elseif match(a:filename, '\.sh$') != -1
+    exec ":!bash " . a:filename
+  elseif match(a:filename, '\.tex$') != -1
+    exec ":!make " 
+  else
+    exec ":!echo \"Don't know how to execute: \"" . a:filename
+  end
+endfunction
+
+map <leader>e :call ExecuteFile(expand("%"))<cr>
+
+" ******************** Bindings from RSpec runner
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
