@@ -57,11 +57,10 @@ set ttimeoutlen=50
 :nmap <Leader>b :CtrlPBuffer<CR>
 :nmap <Leader>f :CtrlP<CR>
 
-
-" Colorscheme settings.
+" Color scheme settings.
 syntax on
 set t_Co=256
-colorscheme tomorrow
+colorscheme tomorrow-night
 
 " Font setting 
 if has("gui_running")
@@ -143,6 +142,8 @@ function! ExecuteFile(filename)
     exec ":!bash " . a:filename
   elseif match(a:filename, '\.tex$') != -1
     exec ":!make " 
+  elseif match(a:filename, 'makefile$') != -1
+    exec ":!make " 
   else
     exec ":!echo \"Don't know how to execute: \"" . a:filename
   end
@@ -153,6 +154,7 @@ map <leader>e :call ExecuteFile(expand("%"))<cr>
 " ******************** Bindings from RSpec runner
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
+" :map <Leader>t :w\|:!rspec --color %<cr>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
