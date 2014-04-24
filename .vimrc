@@ -2,19 +2,21 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
+" Color scheme settings.
+syntax on
+set t_Co=256
+colorscheme tomorrow-night
+
 " Set vim defaults
 set encoding=utf8
 set nocompatible
 filetype plugin indent on
 nnoremap j gj
 nnoremap k gk
-:set guioptions-=m  "remove menu bar from GVIM
-:set guioptions-=T  "remove toolbar from GVIM
 
-" Directory Settings and custom spell check dictionary
-" cd ~
-set autochdir
-set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
+"Remove Menu and Toolbars from GVIM
+set guioptions-=m  
+set guioptions-=T  
 
 " Toggle - comment, uses Vim-commentary
 nmap <C-\> gcc<ESC>
@@ -23,9 +25,21 @@ vmap <C-\> gcc<ESC>
 " No swap files and other basic settings
 set nobackup
 set noswapfile
+set autochdir
+
+" Spell check settings
+set spell
+set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
 
 set clipboard=unnamed " Share the clipboard with windows
-set spell
 set scrolloff=3
 set autoindent
 set complete-=i
@@ -56,11 +70,6 @@ set ttimeoutlen=50
 " Change buffers using CtrlP with the ; key
 :nmap <Leader>b :CtrlPBuffer<CR>
 :nmap <Leader>f :CtrlP<CR>
-
-" Color scheme settings.
-syntax on
-set t_Co=256
-colorscheme tomorrow-night
 
 " Font setting 
 if has("gui_running")
