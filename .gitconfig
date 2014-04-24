@@ -1,0 +1,12 @@
+[color]
+	ui = true
+[user]
+	name = Hammad Khalid
+	email = hammad.kd@gmail.com
+[alias]
+	co = checkout
+	st = status
+[core]
+	editor = vim
+[push]
+	default = simple
