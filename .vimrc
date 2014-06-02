@@ -74,11 +74,11 @@ set ttimeoutlen=50
 " Font setting 
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 14
+    set guifont=Inconsolata\ 16
   elseif has("gui_win32")
-    set guifont=Consolas:h14:cANSI
+    set guifont=Consolas:h16:cANSI
   else 
-    set guifont=Consolas:h14
+    set guifont=Consolas:h16
   endif
 endif
 
