@@ -160,10 +160,3 @@ endfunction
 
 map <leader>e :call ExecuteFile(expand("%"))<cr>
 
-" ******************** Bindings from RSpec runner
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-" :map <Leader>t :w\|:!rspec --color %<cr>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
