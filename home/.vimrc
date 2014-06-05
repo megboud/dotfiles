@@ -1,11 +1,10 @@
-"  Load ~/.vim/bundle packages.
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
 " Color scheme settings.
 syntax on
 set t_Co=256
-colorscheme tomorrow-night
+colorscheme Tomorrow-Night
 
 " Set vim defaults
 set encoding=utf8
