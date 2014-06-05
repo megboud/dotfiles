@@ -1,6 +1,6 @@
 #!/bin/bash
-# Links everything in home/ to ~/, does sanity checks.
-# By Simon Eskildsen (github.com/Sirupsen)
+# Links everything in dotFiles/home/ to ~/, does sanity checks.
+# Originally from Simon Eskildsen (github.com/Sirupsen)
 
 function symlink {
   ln -nsf $1 $2
