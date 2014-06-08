@@ -50,6 +50,7 @@ grb_git_prompt() {
 PS1="$C_RED\h$C_DARKGRAY: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 
 source ~/bin/git-completion.bash
+source ~/.git-prompt.sh
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
 . `brew --prefix`/etc/bash_completion
