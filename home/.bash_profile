@@ -60,3 +60,5 @@ if [[ $OSTYPE == darwin13 ]]; then
 fi
 
 alias ':q'="echo You are not in Vim, old sport."
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

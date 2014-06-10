@@ -6,3 +6,5 @@
 	co = checkout
 [push]
 	default = upstream
+[core]
+	editor = vim
