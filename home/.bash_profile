@@ -43,10 +43,6 @@ grb_git_prompt() {
     fi
 }
 
-
-# PS1="\h:\W\$(grb_git_prompt) \u\$ "
-
-# export PS1="\n$C_DARKGRAY[$C_RED\$(rbenv version-name)$C_DARKGRAY] $C_BLUE\h $C_DARKGRAY: $C_DARKGRAY\w\n$C_DARKGRAY\$$C_DEFAULT "
 PS1="$C_RED\h$C_DARKGRAY: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 
 source ~/bin/git-completion.bash
@@ -64,3 +60,5 @@ alias ':q'="echo You are not in Vim, old sport."
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
