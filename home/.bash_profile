@@ -61,3 +61,6 @@ if [[ $OSTYPE == darwin13 ]]; then
 fi
 
 alias ':q'="echo You are not in Vim, old sport."
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

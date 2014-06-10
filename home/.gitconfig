@@ -4,5 +4,8 @@
 [alias]
 	st = status
 	co = checkout
+  hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 [push]
 	default = upstream
+[core]
+	editor = vim
