@@ -4,7 +4,11 @@
 [alias]
 	st = status
 	co = checkout
+  ci = commit 
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  aa = add --all
+  dc = diff --cached
+  di = diff
 [push]
 	default = upstream
 [core]
