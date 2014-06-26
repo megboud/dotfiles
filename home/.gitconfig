@@ -4,7 +4,7 @@
 [alias]
 	st = status
 	co = checkout
-  ci = commit 
+  ci = commit
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   aa = add --all
   dc = diff --cached
