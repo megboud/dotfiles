@@ -1,5 +1,3 @@
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 C_DEFAULT="\[\033[m\]"
 C_WHITE="\[\033[1m\]"
 C_BLACK="\[\033[30m\]"
@@ -14,7 +12,6 @@ C_DARKGRAY="\[\033[1;30m\]"
 export CLICOLOR=1
 export GREP_OPTIONS="--color"
 export HISTSIZE=10000 # Store 10k history entries
-# shopt -s histappend # Append to the history file when exiting instead of overwriting it
 
 # Git prompt components
 function minutes_since_last_commit {
@@ -48,20 +45,18 @@ PS1="$C_RED\h$C_DARKGRAY: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 source ~/bin/git-completion.bash
 source ~/.git-prompt.sh
 
-if [[ $OSTYPE == darwin13 ]]; then
-  if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-  fi
-fi
-
-if [[ $OSTYPE == darwin13 ]]; then
-  alias vim='mvim -v'
-fi
-
 alias ':q'="echo You are not in Vim, old sport."
 alias 'be'="bundle exec"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+
+if [[ $OSTYPE == darwin13 ]]; then
+  if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+  fi
+  alias vim='mvim -v'
+  export PATH="$HOME/.rbenv/bin:$PATH"
+fi
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
