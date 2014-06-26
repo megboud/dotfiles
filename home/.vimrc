@@ -14,8 +14,8 @@ nnoremap j gj
 nnoremap k gk
 
 "Remove Menu and Toolbars from GVIM
-set guioptions-=m  
-set guioptions-=T  
+set guioptions-=m
+set guioptions-=T
 
 " Toggle - comment, uses Vim-commentary
 nmap <C-\> gcc<ESC>
@@ -45,6 +45,9 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Make airline status bar gem show full path
+let g:airline_section_c = '%F'
 
 set clipboard=unnamed " Share the clipboard with windows
 set scrolloff=3
@@ -78,13 +81,13 @@ set ttimeoutlen=50
 :nmap <Leader>b :CtrlPBuffer<CR>
 :nmap <Leader>f :CtrlP<CR>
 
-" Font setting 
+" Font setting
 if has("gui_running")
   if has("gui_gtk2")
     set guifont=Inconsolata\ 16
   elseif has("gui_win32")
     set guifont=Consolas:h16:cANSI
-  else 
+  else
     set guifont=Consolas:h16
   endif
 endif
@@ -159,9 +162,9 @@ function! ExecuteFile(filename)
   elseif match(a:filename, '\.sh$') != -1
     exec ":!bash " . a:filename
   elseif match(a:filename, '\.tex$') != -1
-    exec ":!make " 
+    exec ":!make "
   elseif match(a:filename, 'makefile$') != -1
-    exec ":!make " 
+    exec ":!make "
   else
     exec ":!echo \"Don't know how to execute: \"" . a:filename
   end
