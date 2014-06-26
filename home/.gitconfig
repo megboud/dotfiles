@@ -13,3 +13,9 @@
 	default = upstream
 [core]
 	editor = vim
+[color]
+	ui = true
+[github]
+  user = hammadk
+[column]
+    ui = auto,dense
