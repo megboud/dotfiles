@@ -26,6 +26,7 @@ set nobackup
 set noswapfile
 set autochdir
 
+
 " Spell check settings
 set spell
 set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
@@ -37,6 +38,13 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 set clipboard=unnamed " Share the clipboard with windows
 set scrolloff=3
@@ -142,7 +150,9 @@ map <Leader>n :call RenameFile()<cr>
 function! ExecuteFile(filename)
   :w
   :silent !clear
-  if match(a:filename, '\.rb$') != -1
+  if match(a:filename, 'test\.rb$') != -1
+    exec ":Rake"
+  elseif match(a:filename, '\.rb$') != -1
     exec ":!ruby " . a:filename
   elseif match(a:filename, '\.js$') != -1
     exec ":!node " . a:filename
