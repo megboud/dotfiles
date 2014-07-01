@@ -73,4 +73,11 @@ if [[ $OSTYPE == darwin13 ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
+
+alias ':q'="echo You are not in Vim, old sport."
+alias 'be'="bundle exec"
+alias 'vfwd'="vagrant ssh -- -N -L 3000:localhost:3000"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
