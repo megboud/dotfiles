@@ -56,6 +56,7 @@ alias gaa="git add --all"
 alias gdc="git diff --cached"
 alias gdi="git diff"
 alias gco="git checkout"
+alias gcom="git checkout master"
 alias gci="git commit -v"
 alias glog='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias gl='glog --graph'
