@@ -78,7 +78,7 @@ fi
 
 alias ':q'="echo You are not in Vim, old sport."
 alias be="bundle exec"
-alias vfwd="vagrant ssh -- -N -L 3000:localhost:3000"
+alias vfwd='cd ~/Code/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
 alias vssh='cd ~/Code/vagrant/ && vagrant ssh'
 
 ### Added by the Heroku Toolbelt
