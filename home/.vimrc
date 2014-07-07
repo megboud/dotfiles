@@ -49,7 +49,7 @@ autocmd BufWinLeave * call clearmatches()
 " Make airline status bar gem show full path
 let g:airline_section_c = '%F'
 
-set clipboard=unnamed " Share the clipboard with windows
+set clipboard=unnamed " Share the clipboard with OS
 set scrolloff=3
 set autoindent
 set complete-=i
