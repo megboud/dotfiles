@@ -61,7 +61,8 @@ alias gci="git commit -v"
 alias glog='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
 alias gl='glog --graph'
 alias gla='gl --all'
-alias gpu="git pull"
+alias gpl="git pull"
+alias gph="git push"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
