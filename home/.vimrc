@@ -147,7 +147,7 @@ function! RenameFile()
   endif
 endfunction
 
-map <Leader>n :call RenameFile()<cr>
+map <Leader>, :call RenameFile()<cr>
 
 " ******************** Execute file if we know how
 function! ExecuteFile(filename)
