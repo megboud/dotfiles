@@ -62,7 +62,7 @@ alias glog='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s
 alias gl='glog --graph'
 alias gla='gl --all'
 alias gpl="git pull"
-alias gph="git push"
+alias gpu="git push"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -74,8 +74,6 @@ if [[ $OSTYPE == darwin13 ]]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
-
-alias ':q'="echo You are not in Vim, old sport."
 alias be="bundle exec"
 alias vfwd='cd ~/Code/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
 alias vssh='cd ~/Code/vagrant/ && vagrant ssh'
