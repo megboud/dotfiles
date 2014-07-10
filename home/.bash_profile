@@ -49,6 +49,7 @@ alias ':q'="echo You are not in Vim, old sport."
 alias be="bundle exec"
 
 # Git aliases
+alias gb="git branch"
 alias gst="git status"
 alias gss="git status --short"
 alias gap="git add -p"
