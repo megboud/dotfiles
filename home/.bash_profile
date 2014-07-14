@@ -42,7 +42,6 @@ grb_git_prompt() {
 
 PS1="$C_RED\h$C_DARKGRAY: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 
-source ~/bin/git-completion.bash
 source ~/.git-prompt.sh
 
 alias ':q'="echo You are not in Vim, old sport."
@@ -75,6 +74,7 @@ if [[ $OSTYPE == darwin13 ]]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
   fi
+  source ~/bin/git-completion.bash
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
