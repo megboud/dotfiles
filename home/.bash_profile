@@ -64,9 +64,12 @@ alias gl='glog --graph'
 alias gla='gl --all'
 alias gpl="git pull"
 alias gpu="git push"
+alias gr="git rebase"
+alias grc="git rebase --continue"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+alias be="bundle exec"
+alias vfwd='cd ~/Code/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
+alias vssh='cd ~/Code/vagrant/ && vagrant ssh'
 
 if [[ $OSTYPE == darwin13 ]]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -74,10 +77,6 @@ if [[ $OSTYPE == darwin13 ]]; then
   fi
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
-
-alias be="bundle exec"
-alias vfwd='cd ~/Code/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
-alias vssh='cd ~/Code/vagrant/ && vagrant ssh'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
