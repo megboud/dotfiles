@@ -28,7 +28,7 @@ set autochdir
 
 
 " Spell check settings
-set spell
+" set spell
 set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
