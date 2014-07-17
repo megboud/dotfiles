@@ -52,7 +52,6 @@ if [[ $OSTYPE == darwin13 ]]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
   fi
-  source ~/bin/git-completion.bash
   export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
