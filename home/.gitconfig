@@ -3,6 +3,7 @@
   email = hammad.khalid@shopify.com
 [alias]
   b="branch"
+  ba="branch --all"
   st="status"
   ss="status --short"
   ap="add -p"
