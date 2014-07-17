@@ -1,6 +1,6 @@
 [user]
-	name = Hammad Khalid
-	email = hammad.khalid@shopify.com
+  name = Hammad Khalid
+  email = hammad.khalid@shopify.com
 [alias]
   b="branch"
   st="status"
@@ -20,11 +20,11 @@
   r="rebase"
   rc="rebase --continue"
 [push]
-	default = upstream
+  default = upstream
 [core]
-	editor = vim
+  editor = vim
 [color]
-	ui = true
+  ui = true
 [github]
   user = hammadk
 [column]
