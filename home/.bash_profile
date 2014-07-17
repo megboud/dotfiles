@@ -44,28 +44,9 @@ PS1="$C_RED\h$C_DARKGRAY: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 
 source ~/.git-prompt.sh
 
-# Git aliases
-alias gb="git branch"
-alias gst="git status"
-alias gss="git status --short"
-alias gap="git add -p"
-alias gaa="git add --all"
-alias gdc="git diff --cached"
-alias gdi="git diff"
-alias gco="git checkout"
-alias gcom="git checkout master"
-alias gci="git commit -v"
-alias glog='git log --date-order --pretty="format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset"'
-alias gl='glog --graph'
-alias gla='gl --all'
-alias gpl="git pull"
-alias gpu="git push"
-alias gr="git rebase"
-alias grc="git rebase --continue"
-
 alias be="bundle exec"
-alias vfwd='cd ~/Code/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
-alias vssh='cd ~/Code/vagrant/ && vagrant ssh'
+alias vfwd='cd ~/src/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
+alias vssh='cd ~/src/vagrant/ && vagrant ssh'
 
 if [[ $OSTYPE == darwin13 ]]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
