@@ -22,6 +22,8 @@ function minutes_since_last_commit {
     echo $minutes_since_last_commit
 }
 
+source ~/.git-prompt.sh
+
 grb_git_prompt() {
     local g="$(__gitdir)"
     if [ -n "$g" ]; then
@@ -39,10 +41,8 @@ grb_git_prompt() {
         echo ${GIT_PROMPT}
     fi
 }
+PS1="$C_RED\h: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 
-PS1="$C_RED\h$C_DARKGRAY: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
-
-source ~/.git-prompt.sh
 
 alias be="bundle exec"
 alias vfwd='cd ~/src/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
