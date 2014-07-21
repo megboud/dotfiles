@@ -48,11 +48,12 @@ alias be="bundle exec"
 alias vfwd='cd ~/src/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
 alias vssh='cd ~/src/vagrant/ && vagrant ssh'
 
-if [[ $OSTYPE == darwin13 ]]; then
+if [ $OSTYPE == darwin13 ]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
   fi
-  export PATH="$HOME/.rbenv/bin:$PATH"
+elif [ $OSTYPE == 'linux-gnu' ]; then
+  export PATH=$HOME/npm/bin:$PATH
 fi
 
 if [ -f ~/.git-completion.bash ]; then
@@ -61,4 +62,5 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
