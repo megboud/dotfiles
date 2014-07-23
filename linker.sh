@@ -2,7 +2,7 @@
 # Links everything in dotFiles/home/ to ~/, does sanity checks.
 # Originally from Simon Eskildsen (github.com/Sirupsen)
 # Just run: bash linker.sh, and it will create symlinks for files in the dotFiles/home folder
-# unless they exist in ~/ already. 
+# unless they exist in ~/ already.
 
 function symlink {
   ln -nsf $1 $2
