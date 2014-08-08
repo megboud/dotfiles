@@ -26,6 +26,8 @@ set nobackup
 set noswapfile
 set autochdir
 
+" Disable quit<enter> message
+nnoremap <C-c> <silent> <C-c>
 
 " Spell check settings
 " set spell
@@ -78,8 +80,8 @@ set ttimeout
 set ttimeoutlen=50
 
 " Change buffers using CtrlP with the ; key
-:nmap <Leader>b :CtrlPBuffer<CR>
-:nmap <Leader>f :CtrlP<CR>
+:nmap <leader>b :CtrlPBuffer<CR>
+:nmap <leader>f :CtrlP<CR>
 
 " Font setting
 if has("gui_running")
@@ -147,7 +149,7 @@ function! RenameFile()
   endif
 endfunction
 
-map <Leader>, :call RenameFile()<cr>
+map <leader>, :call RenameFile()<cr>
 
 " ******************** Execute file if we know how
 function! ExecuteFile(filename)
@@ -172,3 +174,21 @@ endfunction
 
 map <leader>e :call ExecuteFile(expand("%"))<cr>
 
+" ******************** The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind Leader g to grep word under cursor
+nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind Leader G to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap <Leader>G :Ag<SPACE>
