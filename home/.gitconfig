@@ -30,3 +30,5 @@
   user = hammadk
 [column]
   ui = auto,dense
+[pull]
+	rebase = true

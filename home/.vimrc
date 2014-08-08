@@ -134,7 +134,7 @@ endif
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
+set colorcolumn=120
 
 " ******************** Rename current file, via Gary Bernhardt
 function! RenameFile()
