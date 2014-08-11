@@ -24,6 +24,7 @@
   default = upstream
 [core]
   editor = vim
+	excludesfile = ~/.gitignore
 [color]
   ui = true
 [github]
