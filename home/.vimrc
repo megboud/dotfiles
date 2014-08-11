@@ -24,7 +24,7 @@ vmap <C-\> gcc<ESC>
 " No swap files and other basic settings
 set nobackup
 set noswapfile
-set autochdir
+" set autochdir
 
 " Disable quit<enter> message
 nnoremap <C-c> <silent> <C-c>
