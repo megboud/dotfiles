@@ -80,8 +80,8 @@ set ttimeout
 set ttimeoutlen=50
 
 " Change buffers using CtrlP with the ; key
+:nmap <leader>f :CtrlPMixed<CR>
 :nmap <leader>b :CtrlPBuffer<CR>
-:nmap <leader>f :CtrlP<CR>
 
 " Font setting
 if has("gui_running")
