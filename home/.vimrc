@@ -138,6 +138,9 @@ set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=120
 
+" :e should look in current buffer's directory
+map :e :e <C-R>=expand("%:p:h") . "/" <CR>
+
 " ******************** Rename current file, via Gary Bernhardt
 function! RenameFile()
   let old_name = expand('%')
