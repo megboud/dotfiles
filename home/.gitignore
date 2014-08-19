@@ -10,6 +10,7 @@ nbproject
 *.orig
 *.rej
 *.swo
+.git/*
 *.swp
 *.tmproj
 *.a
