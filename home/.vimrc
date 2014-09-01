@@ -76,6 +76,7 @@ set modelines=0 " Prevent security exploits having to do with modelines
 set mouse=n " Mouse usage enabled in normal mode.
 set so=14 " Keep cursor away from edges of screen.
 set display+=lastline
+set tags=./tags;
 
 set ttimeout
 set ttimeoutlen=50
