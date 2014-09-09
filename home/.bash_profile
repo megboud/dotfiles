@@ -47,10 +47,10 @@ alias be="bundle exec"
 alias vfwd='cd ~/src/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
 alias vssh='cd ~/src/vagrant/ && vagrant ssh'
 alias ctagshere='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
-alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
 alias ss='script/server'
 alias berc='bundle exec rails c'
 alias bert='bundle exec rake test'
+# kill -9 $(ps aux | grep unicorn | awk '{print $2}')
 
 if [ $OSTYPE == darwin13 ]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
