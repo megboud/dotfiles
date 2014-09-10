@@ -68,9 +68,12 @@ alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
 alias ss='script/server'
 alias berc='bundle exec rails c'
 alias bert='bundle exec rake test'
-# kill -9 $(ps aux | grep unicorn | awk '{print $2}')
 
 if [ "`uname`" = 'Darwin' ]; then
+  function kill_unicorns {
+    kill -9 $(ps aux | grep unicorn | awk "{print $2}")
+  }
+
   function update_vagrant {
     cd ~/src/vagrant/ \
       && git pull origin master \
