@@ -70,10 +70,6 @@ alias berc='bundle exec rails c'
 alias bert='bundle exec rake test'
 
 if [ "`uname`" = 'Darwin' ]; then
-  function kill_unicorns {
-    kill -9 $(ps aux | grep unicorn | awk "{print $2}")
-  }
-
   function update_vagrant {
     cd ~/src/vagrant/ \
       && git pull origin master \
@@ -82,3 +78,7 @@ if [ "`uname`" = 'Darwin' ]; then
       && vagrant provision
   }
 fi
+
+function kill_unicorns {
+  kill -9 $(ps aux | grep unicorn | awk "{print $2}")
+}
