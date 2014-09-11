@@ -67,6 +67,7 @@ alias ctagshere='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
 alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
 alias ss='script/server'
 alias berc='bundle exec rails c'
+alias bers='bundle exec rails s'
 alias bert='bundle exec rake test'
 
 if [ "`uname`" = 'Darwin' ]; then
