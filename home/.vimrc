@@ -24,7 +24,6 @@ vmap <C-\> gcc<ESC>
 " No swap files and other basic settings
 set nobackup
 set noswapfile
-" set autochdir
 
 " Disable quit<enter> message
 nnoremap <C-c> <silent> <C-c>
@@ -48,8 +47,11 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" Make airline status bar gem show full path
-let g:airline_section_c = '%F'
+" ******************** Airline status bar
+let g:airline_section_b ='%F '
+let g:airline_section_c = '%{getcwd()}'
+let g:airline_left_sep  = ''
+let g:airline_right_sep = ''
 
 set clipboard=unnamed " Share the clipboard with OS
 set scrolloff=3
@@ -70,7 +72,6 @@ set backspace=indent,eol,start " backspace through everything in insert mode
 set laststatus=2
 set expandtab " Use spaces, not tabs
 set tabstop=2 shiftwidth=2
-set number " Numbered lines.
 set relativenumber
 set modelines=0 " Prevent security exploits having to do with modelines
 set mouse=n " Mouse usage enabled in normal mode.
