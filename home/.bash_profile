@@ -1,3 +1,4 @@
+##################### Colors
 C_DEFAULT="\[\033[m\]"
 C_WHITE="\[\033[1m\]"
 C_BLACK="\[\033[30m\]"
@@ -9,20 +10,18 @@ C_PURPLE="\[\033[35m\]"
 C_LIGHTGRAY="\[\033[37m\]"
 C_DARKGRAY="\[\033[1;30m\]"
 
-export CLICOLOR=1
-export GREP_OPTIONS="--color"
-export HISTSIZE=10000 # Store 10k history entries
 
-# Git prompt components
-function minutes_since_last_commit {
+##################### Add Git info to prompt
+source ~/.git-prompt.sh
+source ~/.git-completion.bash
+
+minutes_since_last_commit() {
     now=`date +%s`
     last_commit=`git log --pretty=format:'%at' -1`
     seconds_since_last_commit=$((now-last_commit))
     minutes_since_last_commit=$((seconds_since_last_commit/60))
     echo $minutes_since_last_commit
 }
-
-source ~/.git-prompt.sh
 
 grb_git_prompt() {
     local g="$(__gitdir)"
@@ -51,15 +50,7 @@ elif [ $OSTYPE == 'linux-gnu' ]; then
   export PATH=$HOME/npm/bin:$PATH
 fi
 
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export HISTTIMEFORMAT="%d/%m/%y %T "
+##################### Aliases and helper functions
 
 alias be="bundle exec"
 alias vfwd='cd ~/src/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
@@ -71,8 +62,8 @@ alias berc='bundle exec rails c'
 alias bers='bundle exec rails s'
 alias bert='bundle exec rake test'
 
-if [ "`uname`" = 'Darwin' ]; then
-  function update_vagrant {
+if [ $OSTYPE == darwin13 ]; then
+  update_vagrant() {
     cd ~/src/vagrant/ \
       && git pull origin master \
       && vagrant bundle \
@@ -81,6 +72,18 @@ if [ "`uname`" = 'Darwin' ]; then
   }
 fi
 
-function kill_unicorns {
+kill_unicorns() {
   kill -9 $(ps aux | grep unicorn | awk "{print $2}")
 }
+
+##################### Export options
+
+export CLICOLOR=1
+export GREP_OPTIONS="--color"
+export HISTSIZE=10000 # Store 10k history entries
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
