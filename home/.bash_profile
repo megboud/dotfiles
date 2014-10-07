@@ -85,6 +85,10 @@ kill_unicorns() {
   kill -9 $(ps aux | grep unicorn | awk "{print $2}")
 }
 
+##################### Tmux Options
+
+source ~/.tmuxinator/tmuxinator.bash
+
 ##################### Export options
 
 export CLICOLOR=1
