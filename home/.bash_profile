@@ -52,15 +52,24 @@ fi
 
 ##################### Aliases and helper functions
 
-alias be="bundle exec"
 alias vfwd='cd ~/src/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
 alias vssh='cd ~/src/vagrant/ && vagrant ssh'
 alias ctagshere='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
-alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
-alias ss='script/server'
+
+alias be='bundle exec'
 alias berc='bundle exec rails c'
 alias bers='bundle exec rails s'
 alias bert='bundle exec rake test'
+alias ss='script/server'
+alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
+
+alias ls='ls -CF --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+alias ll='ls -alF'
+alias la='ls -ACF'
+alias l='ls -CF'
 
 if [ $OSTYPE == darwin13 ]; then
   update_vagrant() {
@@ -82,6 +91,7 @@ export CLICOLOR=1
 export GREP_OPTIONS="--color"
 export HISTSIZE=10000 # Store 10k history entries
 export HISTTIMEFORMAT="%d/%m/%y %T "
+export EDITOR='vim'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
