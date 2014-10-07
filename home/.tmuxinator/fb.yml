@@ -20,8 +20,8 @@ root: ~/src/facebook-commerce/
 
 windows:
   - Facebook:
-      layout: main-vertical
+      layout: 8d4d,191x70,0,0[191x44,0,0,0,191x25,0,45{95x25,0,45,1,95x25,96,45,2}]
       panes:
-        - vim
-        - test
-        - server
+        - $EDITOR
+        - #empty
+        - #empty

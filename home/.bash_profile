@@ -64,7 +64,7 @@ alias ss='script/server'
 alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
 
 alias ls='ls -CF --color=auto'
-alias grep='grep --color=auto'
+alias grep='grep --color=auto -rnI'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias ll='ls -alF'
