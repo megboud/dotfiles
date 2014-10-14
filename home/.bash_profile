@@ -62,6 +62,7 @@ alias bers='bundle exec rails s'
 alias bert='bundle exec rake test'
 alias beri='bundle exec ruby -Itest'
 alias ss='script/server'
+alias st='script/test'
 alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
 
 alias ls='ls -CF --color=auto'
