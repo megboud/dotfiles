@@ -4,7 +4,7 @@
 # Just run: bash linker.sh, and it will create symlinks for files in the dotFiles/home folder
 # unless they exist in ~/ already.
 
-function symlink {
+symlink() {
   ln -nsf $1 $2
 }
 

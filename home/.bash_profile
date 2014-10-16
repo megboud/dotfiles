@@ -63,12 +63,7 @@ alias bert='bundle exec rake test:all'
 alias beri='bundle exec ruby -Itest'
 alias ss='script/server'
 alias st='script/test'
-alias killunicorns="kill -9 $(ps aux | grep unicorn | awk '{print $2}' | xargs)"
 
-alias ls='ls -CF --color=auto'
-alias grep='grep --color=auto -rnI'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -ACF'
 alias l='ls -CF'
@@ -94,7 +89,7 @@ source ~/.tmuxinator/tmuxinator.bash
 ##################### Export options
 
 export CLICOLOR=1
-export GREP_OPTIONS="--color"
+export GREP_OPTIONS='--color=always -rnI'
 export HISTSIZE=10000 # Store 10k history entries
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export EDITOR='vim'
@@ -102,4 +97,4 @@ export EDITOR='vim'
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
