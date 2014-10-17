@@ -52,8 +52,8 @@ fi
 
 ##################### Aliases and helper functions
 
-alias vfwd='cd ~/src/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
-alias vssh='cd ~/src/vagrant/ && vagrant ssh'
+alias vfwd='cd ~/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
+alias vssh='cd ~/vagrant/ && vagrant ssh'
 alias ctagshere='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
 
 alias be='bundle exec'
