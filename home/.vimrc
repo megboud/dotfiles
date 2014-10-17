@@ -3,8 +3,8 @@ execute pathogen#infect()
 
 " Color scheme settings.
 syntax on
-set t_Co=256
-colorscheme Tomorrow-Night
+colorscheme base16-tomorrow
+set background=dark
 
 " Set vim defaults
 set encoding=utf8
