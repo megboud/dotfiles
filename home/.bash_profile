@@ -67,6 +67,7 @@ alias st='script/test'
 alias ll='ls -alF'
 alias la='ls -ACF'
 alias l='ls -CF'
+alias g='grep'
 
 if [ $OSTYPE == darwin13 ]; then
   update_vagrant() {
