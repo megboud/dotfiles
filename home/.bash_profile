@@ -71,7 +71,7 @@ alias g='grep'
 
 if [ $OSTYPE == darwin13 ]; then
   update_vagrant() {
-    cd ~/src/vagrant/ \
+    cd ~/vagrant/ \
       && git pull origin master \
       && vagrant bundle \
       && vagrant up \
