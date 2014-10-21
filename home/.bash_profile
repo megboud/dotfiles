@@ -64,10 +64,21 @@ alias beri='bundle exec ruby -Itest'
 alias ss='script/server'
 alias st='script/test'
 
-alias ll='ls -alF'
-alias la='ls -ACF'
-alias l='ls -CF'
+if [ $OSTYPE == darwin13 ]; then
+  alias ll='ls -alFG'
+  alias la='ls -ACG'
+  alias ls='ls -CFG'
+elif [ $OSTYPE == 'linux-gnu' ]; then
+  alias ll='ls --color=auto -alF'
+  alias la='ls --color=auto -ACF'
+  alias ls='ls --color=auto -CF'
+fi
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias g='grep'
+export GREP_OPTIONS='--color=always -rnI'
 
 if [ $OSTYPE == darwin13 ]; then
   update_vagrant() {
@@ -90,7 +101,6 @@ source ~/.tmuxinator/tmuxinator.bash
 ##################### Export options
 
 export CLICOLOR=1
-export GREP_OPTIONS='--color=always -rnI'
 export HISTSIZE=10000 # Store 10k history entries
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export EDITOR='vim'
