@@ -94,6 +94,10 @@ kill_unicorns() {
   kill -9 $(ps aux | grep unicorn | awk "{print $2}")
 }
 
+##################### Ssh-agent launch
+
+source ~/.git-ssh-agent-launch.sh
+
 ##################### Tmux Options
 
 source ~/.tmuxinator/tmuxinator.bash
