@@ -48,8 +48,6 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " ******************** Airline status bar
-let g:airline_section_b ='%f '
-let g:airline_section_c = '%{getcwd()}'
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 
