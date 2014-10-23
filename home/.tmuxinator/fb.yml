@@ -23,6 +23,6 @@ windows:
       layout: 5fdd,200x70,0,0[200x45,0,0,0,200x24,0,46{70x24,0,46,1,79x24,71,46,2,49x24,151,46,3}]
       panes:
         - vim
-        - #empty
-        - tail -f log/development.log -n 100
-        - script/server
+        - bundle exec rake test:all
+        - tail -f log/development.log
+        - bundle exec rails s -p 3088
