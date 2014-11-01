@@ -42,7 +42,7 @@ grb_git_prompt() {
 }
 PS1="$C_RED\h: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 
-if [ $OSTYPE == darwin13 ]; then
+if [[ $OSTYPE = darwin* ]]; then
   if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
   fi
@@ -64,7 +64,7 @@ alias beri='bundle exec ruby -Itest'
 alias ss='script/server'
 alias st='script/test'
 
-if [ $OSTYPE == darwin13 ]; then
+if [[ $OSTYPE = darwin* ]]; then
   alias ll='ls -alFG'
   alias la='ls -ACG'
   alias ls='ls -CFG'
@@ -80,7 +80,7 @@ alias egrep='egrep --color=auto'
 alias g='grep'
 export GREP_OPTIONS='--color=always -rnI'
 
-if [ $OSTYPE == darwin13 ]; then
+if [[ $OSTYPE = darwin* ]]; then
   update_vagrant() {
     cd ~/vagrant/ \
       && git pull origin master \
