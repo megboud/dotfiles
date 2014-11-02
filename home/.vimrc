@@ -47,7 +47,7 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" ******************** Airline status bar
+"""""""""" Airline Config
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 
@@ -80,9 +80,11 @@ set tags=./tags;
 set ttimeout
 set ttimeoutlen=50
 
-" Change buffers using CtrlP with the ; key
-:nmap <leader>f :CtrlPMixed<CR>
-:nmap <leader>b :CtrlPBuffer<CR>
+"""""""""" File Navigation
+nmap <leader>f :CtrlPMixed<CR>
+nmap <leader>b :CtrlPBuffer<CR>
+" %% gives you the current directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Font setting
 if has("gui_running")
@@ -126,9 +128,7 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 
-" :e should look in current buffer's directory
-
-" ******************** Rename current file, via Gary Bernhardt
+"""""""""" Rename current file, via Gary Bernhardt
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'))
@@ -141,7 +141,7 @@ endfunction
 
 map <leader>, :call RenameFile()<cr>
 
-" ******************** Execute file if we know how
+"""""""""" Execute file if we know how
 function! ExecuteFile(filename)
   :w
   :silent !clear
@@ -164,7 +164,7 @@ endfunction
 
 map <leader>e :call ExecuteFile(expand("%"))<cr>
 
-" ******************** The Silver Searcher
+"""""""""" The Silver Searcher
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
