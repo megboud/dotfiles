@@ -10,7 +10,6 @@ C_PURPLE="\[\033[35m\]"
 C_LIGHTGRAY="\[\033[37m\]"
 C_DARKGRAY="\[\033[1;30m\]"
 
-
 ##################### Add Git info to prompt
 source ~/.git-prompt.sh
 source ~/.git-completion.bash
@@ -40,6 +39,7 @@ grb_git_prompt() {
         echo ${GIT_PROMPT}
     fi
 }
+
 PS1="$C_RED\h: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
 
 if [[ $OSTYPE = darwin* ]]; then
