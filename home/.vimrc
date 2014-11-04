@@ -2,7 +2,7 @@ set runtimepath+=~/.vim
 execute pathogen#infect()
 
 " Reload VIMRC
-nmap <leader>r :source $MYVIMRC
+nmap <leader>r :source $MYVIMRC<cr>
 
 " Color scheme settings.
 syntax on
