@@ -1,6 +1,9 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
+" Reload VIMRC
+nmap <leader>r :source $MYVIMRC
+
 " Color scheme settings.
 syntax on
 colorscheme base16-tomorrow
@@ -146,7 +149,7 @@ function! ExecuteFile(filename)
   :w
   :silent !clear
   if match(a:filename, 'test\.rb$') != -1
-    exec ":Rake"
+    exec ":!ruby " . a:filename
   elseif match(a:filename, '\.rb$') != -1
     exec ":!ruby " . a:filename
   elseif match(a:filename, '\.js$') != -1
@@ -183,4 +186,4 @@ endif
 
 " bind Leader G to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap <Leader>G :Ag<SPACE>
+nnoremap <leader>G :Ag<SPACE>
