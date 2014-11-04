@@ -107,13 +107,6 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   endif
 endif
 
-" Highlight cursor line.
-augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup END
-
 " Tame searching / moving
 set ignorecase
 set smartcase
