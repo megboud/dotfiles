@@ -10,6 +10,7 @@
   aa="add --all"
   dc="diff --cached"
   di="diff"
+  dim="diff origin/master"
   co="checkout"
   com="checkout master"
   ci="commit -v"
