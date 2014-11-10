@@ -109,3 +109,7 @@ export EDITOR='vim'
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+if [[ $OSTYPE = darwin* ]]; then
+  export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+fi
