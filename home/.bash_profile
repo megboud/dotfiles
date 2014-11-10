@@ -81,7 +81,6 @@ if [[ $OSTYPE = darwin* ]]; then
   update_vagrant() {
     cd ~/vagrant/ \
       && git pull origin master \
-      && vagrant bundle \
       && vagrant up \
       && vagrant provision
   }
