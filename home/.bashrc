@@ -66,7 +66,7 @@ elif [ $OSTYPE == 'linux-gnu' ]; then
   alias ls='ls --color=auto -CF'
 fi
 
-alias g='rgrep'
+alias g='grep -r'
 export GREP_OPTIONS='--color=always -nI'
 
 if [[ $OSTYPE = darwin* ]]; then
