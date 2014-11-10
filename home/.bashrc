@@ -105,6 +105,8 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 shopt -s checkwinsize
 export EDITOR='vim'
 
+##################### Bash completion options
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -121,6 +123,8 @@ if [[ $OSTYPE = darwin* ]]; then
     . `brew --prefix`/etc/bash_completion
   fi
 fi
+
+##################### PATH options
 
 if [[ $OSTYPE = darwin* ]]; then
   export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
