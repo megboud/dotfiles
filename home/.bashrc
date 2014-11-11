@@ -126,11 +126,13 @@ fi
 
 ##################### PATH options
 
+export PATH="/usr/local/heroku/bin:$PATH"
+
 if [ $OSTYPE == 'linux-gnu' ]; then
-  export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
   export PATH=$HOME/npm/bin:$PATH
 fi
 
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if [[ $OSTYPE = darwin* ]]; then
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+fi
