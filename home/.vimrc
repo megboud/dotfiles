@@ -173,7 +173,7 @@ if executable('ag')
 
   " bind Leader g to grep word under cursor
   nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-elseif
+else
   nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 endif
 
