@@ -1,6 +1,8 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
+let mapleader=","
+
 " Reload VIMRC
 nmap <leader>r :source $MYVIMRC<cr>
 
@@ -159,6 +161,20 @@ function! ExecuteFile(filename)
 endfunction
 
 map <leader>e :call ExecuteFile(expand("%"))<cr>
+
+"""""""""" Replace fancy characters with standard ones
+function! RemoveFancyCharacters()
+    let typo = {}
+    let typo["“"] = '"'
+    let typo["”"] = '"'
+    let typo["‘"] = "'"
+    let typo["’"] = "'"
+    let typo["–"] = '--'
+    let typo["—"] = '---'
+    let typo["…"] = '...'
+    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
+endfunction
+command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
 """""""""" The Silver Searcher
 if executable('ag')
