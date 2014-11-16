@@ -1,7 +1,7 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
-let mapleader=","
+let mapleader=" "
 
 " Reload VIMRC
 nmap <leader>r :source $MYVIMRC<cr>
@@ -21,6 +21,9 @@ nnoremap k gk
 "Remove Menu and Toolbars from GVIM
 set guioptions-=m
 set guioptions-=T
+
+" Make Y behave like other capitals
+map Y y$
 
 " Toggle - comment, uses Vim-commentary
 nmap <C-\> gcc<ESC>
