@@ -1,8 +1,6 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
-let mapleader=" "
-
 " Reload VIMRC
 nmap <leader>r :source $MYVIMRC<cr>
 
