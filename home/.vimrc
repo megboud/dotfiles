@@ -134,6 +134,7 @@ function! RenameFile()
   if new_name != '' && new_name != old_name
     exec ':saveas ' . new_name
     exec ':silent !rm ' . old_name
+    exec ':bd ' . old_name
     redraw!
   endif
 endfunction
