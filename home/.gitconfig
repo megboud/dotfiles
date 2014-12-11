@@ -20,6 +20,7 @@
   pl="pull"
   pu="push"
   r="rebase"
+  rm="rebase master"
   rc="rebase --continue"
 [push]
   default = upstream
