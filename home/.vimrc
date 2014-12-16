@@ -76,7 +76,7 @@ set backspace=indent,eol,start " backspace through everything in insert mode
 set laststatus=2
 set expandtab " Use spaces, not tabs
 set tabstop=2 shiftwidth=2
-set number
+" set number
 set modelines=0 " Prevent security exploits having to do with modelines
 set mouse=n " Mouse usage enabled in normal mode.
 set so=14 " Keep cursor away from edges of screen.
