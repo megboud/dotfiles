@@ -18,7 +18,7 @@
   g=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
   ga=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph --all
   pl="pull"
-  pu="push"
+  ph="push"
   r="rebase"
   rc="rebase --continue"
 [push]
