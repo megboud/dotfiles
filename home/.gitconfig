@@ -11,6 +11,7 @@
   dc="diff --cached"
   di="diff"
   dim="diff origin/master"
+  dimn="diff --name-only origin/master"
   co="checkout"
   com="checkout master"
   ci="commit -v"
