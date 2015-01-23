@@ -22,7 +22,7 @@ minutes_since_last_commit() {
     echo $minutes_since_last_commit
 }
 
-grb_git_prompt() {
+git_prompt() {
     local g="$(__gitdir)"
     if [ -n "$g" ]; then
         local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
@@ -40,7 +40,7 @@ grb_git_prompt() {
     fi
 }
 
-PS1="$C_RED\h: $C_BLUE\w\$(grb_git_prompt) \n$C_DEFAULT\$ "
+PS1="$C_RED\h: $C_BLUE\w\$(git_prompt) \n$C_DEFAULT\$ "
 
 ##################### Aliases and helper functions
 
