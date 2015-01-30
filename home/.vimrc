@@ -127,7 +127,11 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 
-"""""""""" Rename current file, via Gary Bernhardt
+" Vim surround shortcuts for erb files, - for <% %>, and = for <%= %>
+let g:surround_{char2nr('-')} = "<% \r %>"
+let g:surround_{char2nr('=')} = "<%= \r %>"
+
+"""""""""" Rename current file, via Gary Bernhardt <3 <3 <3
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'))
