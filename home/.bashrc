@@ -49,6 +49,7 @@ alias vssh='cd ~/vagrant/ && vagrant ssh'
 alias ctagshere='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
 
 alias be='bundle exec'
+alias bi='bundle install'
 alias berc='bundle exec rails c'
 alias bers='bundle exec rails s'
 alias bert='bundle exec rake test:all'
