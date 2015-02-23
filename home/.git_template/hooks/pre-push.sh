@@ -7,8 +7,14 @@ PUSH_COMMAND=`ps -ocommand= -p $PPID`
 PROTECTED_BRANCHES="^(master|dev|release-*|patch-*)"
 FORCE_PUSH="force|delete|-f"
 
-if [[ "$BRANCH" =~ $PROTECTED_BRANCHES && "$PUSH_COMMAND" =~ $FORCE_PUSH ]]; then
-  echo "Are you sure you want force push to \"$BRANCH\" ?"
+echo "Pre hook was run"
+if [[ "$BRANCH" =~ $PROTECTED_BRANCHES ]]; then
+  read -p "You're about to push to \"$BRANCH\", are you sure you to continue (y/n)" -n 1 -r < /dev/tty
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    exit 0
+  fi
   exit 1
 fi
 
