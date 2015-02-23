@@ -36,3 +36,5 @@
   ui = auto,dense
 [pull]
 	rebase = true
+[init]
+	templatedir = ~/.git_template
