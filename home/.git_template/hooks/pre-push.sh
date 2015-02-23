@@ -1,6 +1,7 @@
 #!/bin/bash
-# Prevents force-pushing to master
+# Warn before pushing to protected branches
 # Initialize for each repo with git init
+# Bypass with git push --no-verify
 
 BRANCH=`git rev-parse --abbrev-ref HEAD`
 PUSH_COMMAND=`ps -ocommand= -p $PPID`
