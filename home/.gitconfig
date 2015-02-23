@@ -2,12 +2,10 @@
   name = Hammad Khalid
   email = hammad.khalid@shopify.com
 [alias]
-  b="branch"
-  ba="branch --all"
-  st="status"
-  ss="status --short"
   ap="add -p"
   aa="add --all"
+  b="branch"
+  ba="branch --all"
   dc="diff --cached"
   di="diff"
   dim="diff origin/master"
@@ -15,6 +13,7 @@
   co="checkout"
   com="checkout master"
   ci="commit -v"
+  cp="cherry-pick -n"
   lg=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
   g=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
   ga=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph --all
@@ -22,6 +21,8 @@
   ph="push"
   r="rebase"
   rc="rebase --continue"
+  st="status"
+  ss="status --short"
 [push]
   default = upstream
 [core]
