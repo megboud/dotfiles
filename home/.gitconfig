@@ -19,8 +19,9 @@
   ga=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph --all
   pl="pull"
   ph="push"
-  r="rebase"
-  rc="rebase --continue"
+  rb="rebase"
+  rbm="rebase master"
+  rbc="rebase --continue"
   st="status"
   ss="status --short"
 [push]
