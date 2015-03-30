@@ -6,6 +6,7 @@
   aa="add --all"
   b="branch"
   ba="branch --all"
+  bsort="for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'"
   dc="diff --cached"
   di="diff"
   dim="diff origin/master"
