@@ -7,6 +7,7 @@
   b="branch"
   ba="branch --all"
   bsort="for-each-ref --sort=-committerdate refs/heads/ --format='%(refname:short)'"
+  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
   dc="diff --cached"
   di="diff"
   dim="diff origin/master"
