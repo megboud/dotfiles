@@ -1,3 +1,5 @@
-# gem 'awesome_print', group: :development
+require "did_you_mean"
 require "awesome_print"
-AwesomePrint.irb!
+require "code"
+require "wirb"
+Wirb.start
