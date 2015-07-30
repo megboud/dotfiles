@@ -57,6 +57,8 @@ alias beri='bundle exec ruby -Itest'
 alias ss='script/server'
 alias st='script/test'
 
+alias vimc='vim `git dimn`' # Opens files different than master, Check .gitconfig for 'dimn' alias
+
 if [[ $OSTYPE = darwin* ]]; then
   alias ll='ls -alFG'
   alias la='ls -ACG'
