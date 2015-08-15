@@ -91,6 +91,8 @@ nmap <leader>f :CtrlPMixed<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 " %% gives you the current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+" Set default style of explorer
+let g:netrw_liststyle=3
 
 " Font setting
 if has("gui_running")
