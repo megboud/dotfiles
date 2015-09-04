@@ -47,6 +47,7 @@ PS1="$C_RED\h: $C_BLUE\w\$(git_prompt) \n$C_DEFAULT\$ "
 alias vfwd='cd ~/vagrant/ && vagrant ssh -- -N -L 3000:localhost:3000'
 alias vssh='cd ~/vagrant/ && vagrant ssh'
 alias ctagshere='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
+alias hpc='script/heroku_production run rails console'
 
 alias be='bundle exec'
 alias bi='bundle install'

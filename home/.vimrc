@@ -87,8 +87,6 @@ set ttimeout
 set ttimeoutlen=50
 
 """""""""" File Navigation
-:au BufAdd,BufNewFile * nested tab sball
-
 nmap <leader>f :CtrlPMixed<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 " %% gives you the current directory
