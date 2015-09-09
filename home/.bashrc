@@ -91,10 +91,6 @@ kill_unicorns() {
 
 source ~/.git-ssh-agent-launch.sh
 
-##################### Tmux Options
-
-source ~/.tmuxinator/tmuxinator.bash
-
 ##################### History options
 
 export CLICOLOR=1
