@@ -15,6 +15,8 @@ set nocompatible
 filetype plugin indent on
 nnoremap j gj
 nnoremap k gk
+noremap < gT
+noremap > gt
 
 "Remove Menu and Toolbars from GVIM
 set guioptions-=m
