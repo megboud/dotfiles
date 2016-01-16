@@ -13,6 +13,11 @@ C_DARKGRAY="\[\033[1;30m\]"
 ##################### Add Git info to prompt
 source ~/.git-prompt.sh
 source ~/.git-completion.bash
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS=1
 
 minutes_since_last_commit() {
     now=`date +%s`
