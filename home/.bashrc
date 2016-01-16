@@ -16,33 +16,43 @@ source ~/.git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWUPSTREAM="auto"
 GIT_PS1_SHOWCOLORHINTS=1
 
-minutes_since_last_commit() {
-    now=`date +%s`
-    last_commit=`git log --pretty=format:'%at' -1`
-    seconds_since_last_commit=$((now-last_commit))
-    minutes_since_last_commit=$((seconds_since_last_commit/60))
-    echo $minutes_since_last_commit
+pluralize() {
+  if [ $2 -eq 1 -o $2 -eq -1 ]
+  then
+    echo ${1}
+  else
+    echo ${1}s
+  fi
+}
+
+time_since_last_commit() {
+  local now=`date +%s`
+  local last_commit=`git log --pretty=format:'%at' -1`
+  local seconds_since_last_commit=$((now - last_commit))
+  local d=$((seconds_since_last_commit/60/60/24))
+  local h=$((seconds_since_last_commit/60/60%24))
+  local m=$((seconds_since_last_commit/60%60))
+
+  if [[ $d > 0 ]]; then
+    echo $d $(pluralize "day" $d)
+  elif [[ $h > 0 ]]; then
+    echo $h $(pluralize "hour" $h)
+  elif [[ $m > 0 ]]; then
+    echo $m $(pluralize "min" $m)
+  else
+    echo $seconds_since_last_commit $(pluralize "second" $seconds_since_last_commit)
+  fi
 }
 
 git_prompt() {
-    local g="$(__gitdir)"
-    if [ -n "$g" ]; then
-        local MINUTES_SINCE_LAST_COMMIT=`minutes_since_last_commit`
-        if [ "$MINUTES_SINCE_LAST_COMMIT" -gt 30 ]; then
-            local COLOR=${RED}
-        elif [ "$MINUTES_SINCE_LAST_COMMIT" -gt 10 ]; then
-            local COLOR=${YELLOW}
-        else
-            local COLOR=${GREEN}
-        fi
-        local SINCE_LAST_COMMIT="${COLOR}$(minutes_since_last_commit)m${NORMAL}"
-        # The __git_ps1 function inserts the current git branch where %s is
-        local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
-        echo ${GIT_PROMPT}
-    fi
+  local g="$(__gitdir)"
+  if [ -n "$g" ]; then
+    local SINCE_LAST_COMMIT="$(time_since_last_commit)${NORMAL}"
+    local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
+    echo ${GIT_PROMPT}
+  fi
 }
 
 PS1="$C_RED\h: $C_BLUE\w\$(git_prompt) \n$C_DEFAULT\$ "
