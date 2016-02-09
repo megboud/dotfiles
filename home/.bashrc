@@ -69,6 +69,7 @@ alias berc='bundle exec rails c'
 alias bers='bundle exec rails s'
 alias bert='bundle exec rake test:all'
 alias beri='bundle exec ruby -Itest'
+alias berj='bundle exec rake teaspoon'
 alias ss='script/server'
 alias st='script/test'
 
