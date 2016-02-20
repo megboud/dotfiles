@@ -29,7 +29,7 @@ map Y y$
 nmap <C-\> gcc<ESC>
 vmap <C-\> gcc<ESC>
 
-" No swap files and other basic settings
+" No swap files
 set nobackup
 set noswapfile
 
@@ -91,8 +91,10 @@ set ttimeoutlen=50
 """""""""" File Navigation
 nmap <leader>f :CtrlPMixed<CR>
 nmap <leader>b :CtrlPBuffer<CR>
+
 " %% gives you the current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
 " Set default style of explorer
 let g:netrw_liststyle=3
 
@@ -174,7 +176,10 @@ endfunction
 
 map <leader>e :call ExecuteFile(expand("%"))<cr>
 
-"""""""""" Replace fancy characters with standard ones
+" Ruby ~ Puts caller <3
+nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+
+"""""""""" Fancy characters
 function! RemoveFancyCharacters()
     let typo = {}
     let typo["“"] = '"'
@@ -188,32 +193,18 @@ function! RemoveFancyCharacters()
 endfunction
 command! RemoveFancyCharacters :call RemoveFancyCharacters()
 
-"""""""""" LineBreakAt
-" Insert a newline after each specified string (or before if use '!').
-" :LineBreakAt ( )  Insert newline after each '(' and ')' in current line.
-" :%LineBreakAt ( ) Same, whole buffer.
-" :LineBreakAt! ( ) Insert newline before each '(' and ')' in current line.
-" :%LineBreakAt Insert newline after each occurrence of last-used search pattern.
-" :%LineBreakAt!  Insert newline before each occurrence of last-used search pattern.
-function! LineBreakAt(bang, ...) range
-  let save_search = @/
-  if empty(a:bang)
-    let before = ''
-    let after = '\ze.'
-    let repl = '&\r'
-  else
-    let before = '.\zs'
-    let after = ''
-    let repl = '\r&'
-  endif
-  let pat_list = map(deepcopy(a:000), "escape(v:val, '/\\.*$^~[')")
-  let find = empty(pat_list) ? @/ : join(pat_list, '\|')
-  let find = before . '\%(' . find . '\)' . after
-  " Example: 10,20s/\%(arg1\|arg2\|arg3\)\ze./&\r/ge
-  execute a:firstline . ',' . a:lastline . 's/'. find . '/' . repl . '/ge'
-  let @/ = save_search
+function! AddFancyCharacters()
+    let typo = {}
+    let typo['"'] = '“'
+    let typo['"'] = '”'
+    let typo["'"] = "‘"
+    let typo["'"] = "’"
+    let typo["-"] = '–'
+    let typo["---"] = '—'
+    let typo["..."] = '…'
+    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
 endfunction
-command! -bang -nargs=* -range LineBreakAt <line1>,<line2>call LineBreakAt('<bang>', <f-args>)
+command! AddFancyCharacters :call AddFancyCharacters()
 
 """""""""" The Silver Searcher
 if executable('ag')
