@@ -149,4 +149,6 @@ export NVM_DIR="/home/vagrant/.nvm"
 
 if [[ $OSTYPE = darwin* ]]; then
   [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+
+  source /usr/local/share/chruby/chruby.sh
 fi
