@@ -146,3 +146,7 @@ fi
 
 export NVM_DIR="/home/vagrant/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+if [[ $OSTYPE = darwin* ]]; then
+  [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+fi

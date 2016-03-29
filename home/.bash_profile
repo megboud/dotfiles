@@ -3,5 +3,3 @@ if [ -f ~/.bashrc ]; then
 else
   echo "Could not find ~/.bashrc"
 fi
-
-[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
