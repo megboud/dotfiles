@@ -144,10 +144,5 @@ if [ $OSTYPE == 'linux-gnu' ]; then
   export PATH=$HOME/npm/bin:$PATH
 fi
 
-# if [[ $OSTYPE = darwin* ]]; then
-#   export PATH="$HOME/.rbenv/bin:$PATH"
-#   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-# fi
-
 export NVM_DIR="/home/vagrant/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
