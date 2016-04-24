@@ -151,4 +151,5 @@ if [[ $OSTYPE = darwin* ]]; then
   [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
   source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
 fi

@@ -13,6 +13,7 @@ set background=dark
 set encoding=utf8
 set nocompatible
 filetype plugin indent on
+set fileformat=unix
 nnoremap j gj
 nnoremap k gk
 noremap < gT
@@ -159,6 +160,8 @@ function! ExecuteFile(filename)
     exec ":!ruby " . a:filename
   elseif match(a:filename, '\.rb$') != -1
     exec ":!ruby " . a:filename
+  elseif match(a:filename, '\.py$') != -1
+    exec ":!python " . a:filename
   elseif match(a:filename, '\.go$') != -1
     exec ":!go run " . a:filename
   elseif match(a:filename, '\.js$') != -1
