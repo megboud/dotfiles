@@ -14,6 +14,7 @@ set encoding=utf8
 set nocompatible
 filetype plugin indent on
 set fileformat=unix
+set omnifunc=syntaxcomplete#Complete
 nnoremap j gj
 nnoremap k gk
 noremap < gT
