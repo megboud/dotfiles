@@ -74,6 +74,8 @@ alias berj='bundle exec rake teaspoon'
 alias ss='script/server'
 alias st='script/test'
 
+alias p='python'
+
 alias vimc='vim `git dimn`' # Opens files different than master, Check .gitconfig for 'dimn' alias
 alias spellcheck='grep \".*\" | grep -v "#{" | aspell --sug-mode=normal -a |  uniq' # Find spelling errors in strings surrounded by "quotes"
 
