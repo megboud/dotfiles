@@ -46,3 +46,7 @@ log/*.log
 tmp/**/*
 node_modules/*
 tags
+venv
+*.pyc
+staticfiles
+.env
