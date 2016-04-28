@@ -154,4 +154,5 @@ if [[ $OSTYPE = darwin* ]]; then
 
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
+  source ~/.autoenv/activate.sh
 fi
