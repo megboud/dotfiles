@@ -89,7 +89,7 @@ elif [ $OSTYPE == 'linux-gnu' ]; then
   alias ls='ls --color=auto -CF'
 fi
 
-alias g='grep --color=always -rnI'
+alias g='grep --color=always -rnI --exclude-dir=log'
 
 if [[ $OSTYPE = darwin* ]]; then
   update_vagrant() {
