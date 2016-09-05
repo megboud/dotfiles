@@ -1,9 +1,6 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
-" Reload VIMRC
-nmap <leader>r :source $MYVIMRC<cr>
-
 " Color scheme settings.
 syntax on
 colorscheme base16-tomorrow
@@ -13,19 +10,7 @@ set background=dark
 set encoding=utf8
 set nocompatible
 filetype plugin indent on
-set fileformat=unix
 set omnifunc=syntaxcomplete#Complete
-nnoremap j gj
-nnoremap k gk
-noremap < gT
-noremap > gt
-
-"Remove Menu and Toolbars from GVIM
-set guioptions-=m
-set guioptions-=T
-
-" Make Y behave like other capitals
-map Y y$
 
 " Toggle - comment, uses Vim-commentary
 nmap <C-\> gcc<ESC>
