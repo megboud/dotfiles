@@ -196,7 +196,10 @@ map <leader>e :call ExecuteFile(expand("%"))<cr>
 " Ruby ~ Puts caller <3
 nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
-"""""""""" The Silver Searcher
+" FASTER SEARCH
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+" https://github.com/ggreer/the_silver_searcher
+
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -210,8 +213,9 @@ if executable('ag')
   " bind Leader g to grep word under cursor
   nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-  " bind Leader G to grep shortcut
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  nnoremap <leader>G :Ag<SPACE>
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap <leader>G :Ag<SPACE>
+  endif
 endif
 
