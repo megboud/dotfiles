@@ -2,6 +2,7 @@ set runtimepath+=~/.vim
 execute pathogen#infect()
 
 set encoding=utf8
+set nocompatible
 filetype plugin indent on
 set nobackup
 set nowritebackup
