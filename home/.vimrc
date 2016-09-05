@@ -82,13 +82,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" File Navigation
-nmap <leader>f :CtrlP<CR>
-nmap <leader>b :CtrlPBuffer<CR>
-
-" %% gives you the current directory
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-
 " Set default style of explorer
 let g:netrw_liststyle=3
 
@@ -144,9 +137,6 @@ endfunction
 
 map <leader>e :call RunFile(expand("%"))<cr>
 
-" Rails debug helper
-nnoremap <leader>d oputs "#" * 90<c-m>Rails.logger.debug("DEBUG:")<c-m>puts "#" * 90<esc>
-
 " Faster search
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " https://github.com/ggreer/the_silver_searcher
@@ -176,3 +166,12 @@ vmap <C-\> gcc<ESC>
 
 " Replace t with tabnew in console
 ca t tabnew
+
+" %% gives you the current directory
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+
+" Rails debug helper
+nnoremap <leader>d oputs "#" * 90<c-m>Rails.logger.debug("DEBUG:")<c-m>puts "#" * 90<esc>
+
+" Browse open buffers
+nmap <leader>b :CtrlPBuffer<CR>
