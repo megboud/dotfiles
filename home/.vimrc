@@ -6,49 +6,40 @@ filetype plugin indent on
 set nobackup
 set nowritebackup
 set noswapfile
-set ruler                 " Show cursor position at all times
-set showcmd               " Display incomplete commands
-set laststatus=2          " Always display the status line
-set autowrite             " Automatically write before running commands
-set clipboard=unnamed     " Share the clipboard with OS
-set autoindent            " Copy indent from current line
-set hidden
-set wildmenu
-set wildmode=list:longest
 set visualbell
-set ttyfast
-set backspace=indent,eol,start " backspace through everything in insert mode
-ca t tabnew
-set modelines=0 " Prevent security exploits having to do with modelines
-set mouse=n " Mouse usage enabled in normal mode.
-set so=14 " Keep cursor away from edges of screen.
-set display+=lastline
+set ruler                  " Show cursor position at all times
+set showcmd                " Display incomplete commands
+set laststatus=2           " Always display the status line
+set autowrite              " Automatically write before running commands
+set clipboard=unnamed      " Share the clipboard with OS
+set autoindent             " Copy indent from current line
+set wildmenu               " Enhanced completion in command-line
+set wildmode=list:longest  " When more than one match, list all matches and complete till longest common string
+set backspace=2            " Backspace deletes like most programs in insert mode
+set nojoinspaces           " Use one space, not two, after punctuation.
+set showmatch              " When a bracket is inserted, briefly jump to matching one
+set textwidth=80           " Break long strings into multiple lines
 
 " Softtabs tabs, 2 spaces
 set tabstop=2
 set shiftwidth=2
 set shiftround
-set expandtab " Use spaces, not tabs
+set expandtab
 
-set ttimeout
-set ttimeoutlen=50
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+
 
 " Tame searching / moving
 set ignorecase
 set smartcase
-set gdefault
 set incsearch
-set showmatch
-" Use <C-L> to clear the highlighting of :set hlsearch.
 set hlsearch
+
+" Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 endif
-
-" Handle long lines correctly
-set wrap
-set textwidth=79
-set formatoptions=qrn1
 
 " Color scheme settings.
 syntax on
@@ -58,6 +49,8 @@ set background=dark
 " Toggle - comment, uses Vim-commentary
 nmap <C-\> gcc<ESC>
 vmap <C-\> gcc<ESC>
+
+ca t tabnew
 
 let g:turbux_command_prefix = 'bundle exec'
 
@@ -112,13 +105,6 @@ if has("gui_running")
     set guifont=Consolas:h16:cANSI
   else
     set guifont=Consolas:h16
-  endif
-endif
-
-if &listchars ==# 'eol:$'
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-  if !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==# 'utf-8')
-  let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u00b7"
   endif
 endif
 
