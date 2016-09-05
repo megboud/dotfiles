@@ -19,6 +19,7 @@ set backspace=2            " Backspace deletes like most programs in insert mode
 set nojoinspaces           " Use one space, not two, after punctuation.
 set showmatch              " When a bracket is inserted, briefly jump to matching one
 set textwidth=80           " Break long strings into multiple lines
+set so=15                  " Don't hide buffer after pasting content
 
 " Softtabs tabs, 2 spaces
 set tabstop=2
@@ -28,7 +29,6 @@ set expandtab
 
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
-
 
 " Tame searching / moving
 set ignorecase
@@ -45,14 +45,6 @@ endif
 syntax on
 colorscheme base16-tomorrow
 set background=dark
-
-" Toggle - comment, uses Vim-commentary
-nmap <C-\> gcc<ESC>
-vmap <C-\> gcc<ESC>
-
-ca t tabnew
-
-let g:turbux_command_prefix = 'bundle exec'
 
 " Spell check settings
 " set spell
@@ -73,11 +65,14 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-"""""""""" Airline Config
+" Turbux config
+let g:turbux_command_prefix = 'bundle exec'
+
+" Airline config
 let g:airline_left_sep  = ''
 let g:airline_right_sep = ''
 
-"""""""""" Syntastic setup
+" Syntastic config
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -87,7 +82,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-"""""""""" File Navigation
+" File Navigation
 nmap <leader>f :CtrlP<CR>
 nmap <leader>b :CtrlPBuffer<CR>
 
@@ -174,3 +169,10 @@ if executable('ag')
     nnoremap <leader>G :Ag<SPACE>
   endif
 endif
+
+" Toggle - comment, uses Vim-commentary
+nmap <C-\> gcc<ESC>
+vmap <C-\> gcc<ESC>
+
+" Replace t with tabnew in console
+ca t tabnew
