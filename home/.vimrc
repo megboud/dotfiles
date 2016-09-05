@@ -20,6 +20,7 @@ set nojoinspaces           " Use one space, not two, after punctuation.
 set showmatch              " When a bracket is inserted, briefly jump to matching one
 set textwidth=80           " Break long strings into multiple lines
 set so=15                  " Don't hide buffer after pasting content
+let g:netrw_liststyle=3    " Set default style of file explorer
 
 " Softtabs tabs, 2 spaces
 set tabstop=2
@@ -46,17 +47,8 @@ syntax on
 colorscheme base16-tomorrow
 set background=dark
 
-" Spell check settings
-" set spell
+" Spell settings
 set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -81,20 +73,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-" Set default style of explorer
-let g:netrw_liststyle=3
-
-" Font setting
-if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Inconsolata\ 16
-  elseif has("gui_win32")
-    set guifont=Consolas:h16:cANSI
-  else
-    set guifont=Consolas:h16
-  endif
-endif
 
 " Rename current file
 function! RenameFile()
@@ -171,7 +149,7 @@ ca t tabnew
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " Rails debug helper
-nnoremap <leader>d oputs "#" * 90<c-m>Rails.logger.debug("DEBUG:")<c-m>puts "#" * 90<esc>
+nnoremap <leader>d oputs "#" * 90<c-m>Rails.logger.debug("DEBUG: ")<c-m>puts "#" * 90<esc>
 
 " Browse open buffers
 nmap <leader>b :CtrlPBuffer<CR>
