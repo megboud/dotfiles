@@ -209,8 +209,9 @@ if executable('ag')
 
   " bind Leader g to grep word under cursor
   nnoremap <leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+  " bind Leader G to grep shortcut
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  nnoremap <leader>G :Ag<SPACE>
 endif
 
-" bind Leader G to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap <leader>G :Ag<SPACE>
