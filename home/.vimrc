@@ -1,52 +1,13 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
-" Color scheme settings.
-syntax on
-colorscheme base16-tomorrow
-set background=dark
-
 " Set vim defaults
 set encoding=utf8
 set nocompatible
 filetype plugin indent on
-set omnifunc=syntaxcomplete#Complete
-
-" Toggle - comment, uses Vim-commentary
-nmap <C-\> gcc<ESC>
-vmap <C-\> gcc<ESC>
-
-" No swap files
 set nobackup
+set nowritebackup
 set noswapfile
-
-" Disable quit<enter> message
-nnoremap <C-c> <silent> <C-c>
-
-let g:turbux_command_prefix = 'bundle exec'
-
-" Spell check settings
-" set spell
-set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
-highlight clear SpellCap
-highlight SpellCap term=underline cterm=underline
-highlight clear SpellRare
-highlight SpellRare term=underline cterm=underline
-highlight clear SpellLocal
-highlight SpellLocal term=underline cterm=underline
-
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
-
-"""""""""" Airline Config
-let g:airline_left_sep  = ''
-let g:airline_right_sep = ''
 
 set clipboard=unnamed " Share the clipboard with OS
 set scrolloff=3
@@ -77,6 +38,43 @@ set tags=./tags;
 
 set ttimeout
 set ttimeoutlen=50
+
+" Color scheme settings.
+syntax on
+colorscheme base16-tomorrow
+set background=dark
+
+" Toggle - comment, uses Vim-commentary
+nmap <C-\> gcc<ESC>
+vmap <C-\> gcc<ESC>
+
+" Disable quit<enter> message
+nnoremap <C-c> <silent> <C-c>
+
+let g:turbux_command_prefix = 'bundle exec'
+
+" Spell check settings
+" set spell
+set spellfile=~/.vim/spell/mySpellFile.en.utf-8.add
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+"""""""""" Airline Config
+let g:airline_left_sep  = ''
+let g:airline_right_sep = ''
 
 """""""""" Syntastic setup
 set statusline+=%#warningmsg#
@@ -137,7 +135,7 @@ set formatoptions=qrn1
 let g:surround_{char2nr('-')} = "<% \r %>"
 let g:surround_{char2nr('=')} = "<%= \r %>"
 
-"""""""""" Rename current file, via Gary Bernhardt <3 <3 <3
+" Rename current file
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'))
@@ -151,8 +149,8 @@ endfunction
 
 map <leader>, :call RenameFile()<cr>
 
-"""""""""" Execute file if we know how
-function! ExecuteFile(filename)
+" Run file if we know how
+function! RunFile(filename)
   :w
   :silent !clear
   if match(a:filename, 'test\.rb$') != -1
@@ -176,12 +174,12 @@ function! ExecuteFile(filename)
   end
 endfunction
 
-map <leader>e :call ExecuteFile(expand("%"))<cr>
+map <leader>e :call RunFile(expand("%"))<cr>
 
-" Ruby ~ Puts caller <3
-nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
+" Rails debug helper
+nnoremap <leader>d oputs "#" * 90<c-m>Rails.logger.debug("DEBUG:")<c-m>puts "#" * 90<esc>
 
-" FASTER SEARCH
+" Faster search
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " https://github.com/ggreer/the_silver_searcher
 
