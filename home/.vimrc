@@ -196,33 +196,6 @@ map <leader>e :call ExecuteFile(expand("%"))<cr>
 " Ruby ~ Puts caller <3
 nnoremap <leader>wtf oputs "#" * 90<c-m>puts caller<c-m>puts "#" * 90<esc>
 
-"""""""""" Fancy characters
-function! RemoveFancyCharacters()
-    let typo = {}
-    let typo["“"] = '"'
-    let typo["”"] = '"'
-    let typo["‘"] = "'"
-    let typo["’"] = "'"
-    let typo["–"] = '--'
-    let typo["—"] = '---'
-    let typo["…"] = '...'
-    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
-endfunction
-command! RemoveFancyCharacters :call RemoveFancyCharacters()
-
-function! AddFancyCharacters()
-    let typo = {}
-    let typo['"'] = '“'
-    let typo['"'] = '”'
-    let typo["'"] = "‘"
-    let typo["'"] = "’"
-    let typo["-"] = '–'
-    let typo["---"] = '—'
-    let typo["..."] = '…'
-    :exe ":%s/".join(keys(typo), '\|').'/\=typo[submatch(0)]/ge'
-endfunction
-command! AddFancyCharacters :call AddFancyCharacters()
-
 """""""""" The Silver Searcher
 if executable('ag')
   " Use ag over grep
