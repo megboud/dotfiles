@@ -1,7 +1,6 @@
 set runtimepath+=~/.vim
 execute pathogen#infect()
 
-" Set vim defaults
 set encoding=utf8
 filetype plugin indent on
 set nobackup
@@ -11,28 +10,25 @@ set ruler                 " Show cursor position at all times
 set showcmd               " Display incomplete commands
 set laststatus=2          " Always display the status line
 set autowrite             " Automatically write before running commands
-
-set clipboard=unnamed " Share the clipboard with OS
-set scrolloff=3
-set autoindent
-set complete-=i
-set smarttab
-set showmode
-set nrformats-=octal
-set shiftround
+set clipboard=unnamed     " Share the clipboard with OS
+set autoindent            " Copy indent from current line
 set hidden
 set wildmenu
 set wildmode=list:longest
 set visualbell
 set ttyfast
 set backspace=indent,eol,start " backspace through everything in insert mode
-set expandtab " Use spaces, not tabs
-set tabstop=2 shiftwidth=2
 ca t tabnew
 set modelines=0 " Prevent security exploits having to do with modelines
 set mouse=n " Mouse usage enabled in normal mode.
 set so=14 " Keep cursor away from edges of screen.
 set display+=lastline
+
+" Softtabs tabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab " Use spaces, not tabs
 
 set ttimeout
 set ttimeoutlen=50
