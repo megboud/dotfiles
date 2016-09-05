@@ -64,9 +64,6 @@ set background=dark
 nmap <C-\> gcc<ESC>
 vmap <C-\> gcc<ESC>
 
-" Disable quit<enter> message
-nnoremap <C-c> <silent> <C-c>
-
 let g:turbux_command_prefix = 'bundle exec'
 
 " Spell check settings
