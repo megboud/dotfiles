@@ -38,6 +38,23 @@ set tags=./tags;
 set ttimeout
 set ttimeoutlen=50
 
+" Tame searching / moving
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+" Use <C-L> to clear the highlighting of :set hlsearch.
+set hlsearch
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+endif
+
+" Handle long lines correctly
+set wrap
+set textwidth=79
+set formatoptions=qrn1
+
 " Color scheme settings.
 syntax on
 colorscheme base16-tomorrow
@@ -113,27 +130,6 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
   endif
 endif
 
-" Tame searching / moving
-set ignorecase
-set smartcase
-set gdefault
-set incsearch
-set showmatch
-" Use <C-L> to clear the highlighting of :set hlsearch.
-set hlsearch
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-endif
-
-" Handle long lines correctly
-set wrap
-set textwidth=79
-set formatoptions=qrn1
-
-" Vim surround shortcuts for erb files, - for <% %>, and = for <%= %>
-let g:surround_{char2nr('-')} = "<% \r %>"
-let g:surround_{char2nr('=')} = "<%= \r %>"
-
 " Rename current file
 function! RenameFile()
   let old_name = expand('%')
@@ -200,4 +196,3 @@ if executable('ag')
     nnoremap <leader>G :Ag<SPACE>
   endif
 endif
-
