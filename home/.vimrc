@@ -119,16 +119,12 @@ map <leader>, :call RenameFile()<cr>
 function! RunFile(filename)
   :w
   :silent !clear
-  if match(a:filename, 'test\.rb$') != -1
-    exec ":!ruby " . a:filename
-  elseif match(a:filename, '\.rb$') != -1
+  if match(a:filename, '\.rb$') != -1
     exec ":!ruby " . a:filename
   elseif match(a:filename, '\.py$') != -1
     exec ":!python " . a:filename
   elseif match(a:filename, '\.go$') != -1
     exec ":!go run " . a:filename
-  elseif match(a:filename, '\.js$') != -1
-    exec ":!node " . a:filename
   elseif match(a:filename, '\.sh$') != -1
     exec ":!bash " . a:filename
   elseif match(a:filename, '\.tex$') != -1
