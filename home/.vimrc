@@ -162,6 +162,8 @@ if executable('ag')
     command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
     nnoremap <leader>G :Ag<SPACE>
   endif
+else
+  echo "Silver surfer not found"
 endif
 
 " Toggle - comment, uses Vim-commentary
