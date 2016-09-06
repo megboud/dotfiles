@@ -11,6 +11,7 @@ Plugin 'lilydjwg/colorizer'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-endwise'
@@ -87,8 +88,8 @@ autocmd BufWinLeave * call clearmatches()
 let g:turbux_command_prefix = 'bundle exec'
 
 " Airline config
-let g:airline_left_sep  = ''
-let g:airline_right_sep = ''
+let g:airline_theme='tomorrow'
+let g:airline_powerline_fonts = 1
 
 " Syntastic config
 set statusline+=%#warningmsg#
