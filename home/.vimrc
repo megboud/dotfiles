@@ -178,3 +178,4 @@ nnoremap <leader>d oputs "#" * 90<c-m>Rails.logger.debug("DEBUG: ")<c-m>puts "#"
 
 " Browse open buffers
 nmap <leader>b :CtrlPBuffer<CR>
+nmap <leader>f :CtrlP<CR>
