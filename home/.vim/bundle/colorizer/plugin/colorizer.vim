@@ -1,6 +1,6 @@
 " colorizer.vim	Colorize all text in the form #rrggbb or #rgb; entrance
 " Maintainer:	lilydjwg <lilydjwg@gmail.com>
-" Version:	1.4.1
+" Version:	1.4.2
 " Licence:	Vim license. See ':help license'
 " Derived From: css_color.vim
 " 		http://www.vim.org/scripts/script.php?script_id=2150
@@ -29,6 +29,14 @@
 " If you don't want to enable colorizer at startup, set the following:
 "	let g:colorizer_startup = 0
 "
+" You can disable it on long buffers, for example if more than 1000 lines:
+"	let g:colorizer_maxlines = 1000
+" -1 means unlimited number of lines
+"
+" There are color strings in the format #RRGGBBAA and #AARRGGBB. The former is
+" more common so it's the default. If you want the latter, set the following:
+"	let g:colorizer_hex_alpha_first = 1
+"
 " Note: if you modify a color string in normal mode, if the cursor is still on
 " that line, it'll take 'updatetime' seconds to update. You can use
 " :ColorHighlight (or your key mapping) again to force update.
@@ -46,6 +54,9 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 "Define commands {{{1
+if !exists('g:colorizer_maxlines')
+  let g:colorizer_maxlines = -1
+endif
 command! -bar -bang ColorHighlight call colorizer#ColorHighlight(1, "<bang>")
 command! -bar ColorClear call colorizer#ColorClear()
 command! -bar ColorToggle call colorizer#ColorToggle()
@@ -59,4 +70,4 @@ endif
 
 " Cleanup and modelines {{{1
 let &cpo = s:save_cpo
-" vim:ft=vim:fdm=marker:fmr={{{,}}}:
+" vim:ft=vim:fdm=marker:fmr={{{,}}}:ts=8:sw=2:sts=2:

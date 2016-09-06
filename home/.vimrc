@@ -1,9 +1,33 @@
-set runtimepath+=~/.vim
-execute pathogen#infect()
+set nocompatible              " Vundle setup
+filetype off                  " Vundle setup
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'chriskempson/base16-vim'
+Plugin 'lilydjwg/colorizer'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'fatih/vim-go'
+Plugin 'pangloss/vim-javascript'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'jgdavey/vim-turbux'
+Plugin 'benmills/vimux'
+
+call vundle#end()            " Vundle setup
+filetype plugin indent on    " Vundle setup
 
 set encoding=utf8
-set nocompatible
-filetype plugin indent on
 set nobackup
 set nowritebackup
 set noswapfile
