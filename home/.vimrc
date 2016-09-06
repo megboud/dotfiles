@@ -46,6 +46,7 @@ set showmatch              " When a bracket is inserted, briefly jump to matchin
 set textwidth=80           " Break long strings into multiple lines
 set so=15                  " Don't hide buffer after pasting content
 let g:netrw_liststyle=3    " Set default style of file explorer
+let g:netrw_dirhistmax = 0 " Don't save history of network writes
 
 " Softtabs tabs, 2 spaces
 set tabstop=2
