@@ -86,6 +86,8 @@ autocmd BufWinLeave * call clearmatches()
 
 " Turbux config
 let g:turbux_command_prefix = 'bundle exec'
+" hack to fix broken 'run focused test' since https://github.com/jgdavey/vim-turbux/pull/36
+let g:turbux_test_type = ''
 
 " Airline config
 let g:airline_theme='tomorrow'
