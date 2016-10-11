@@ -150,9 +150,11 @@ export NVM_DIR="/home/vagrant/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 if [[ $OSTYPE = darwin* ]]; then
-  [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-  source ~/.autoenv/activate.sh
+  if [ -f /opt/dev/dev.sh ]; then
+    source /opt/dev/dev.sh
+  else
+    source /usr/local/share/chruby/chruby.sh
+    source /usr/local/share/chruby/auto.sh
+    source ~/.autoenv/activate.sh
+  fi
 fi
