@@ -85,7 +85,10 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Turbux config
-let g:turbux_command_prefix = 'bundle exec'
+if filereadable("Gemfile")
+  let g:turbux_command_prefix = 'bundle exec'
+endif
+
 " hack to fix broken 'run focused test' since https://github.com/jgdavey/vim-turbux/pull/36
 let g:turbux_test_type = ''
 
