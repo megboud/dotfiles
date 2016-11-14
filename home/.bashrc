@@ -158,3 +158,5 @@ if [[ $OSTYPE = darwin* ]]; then
     source ~/.autoenv/activate.sh
   fi
 fi
+
+export PATH="$HOME/.yarn/bin:$PATH"

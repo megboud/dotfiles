@@ -184,3 +184,9 @@ nnoremap <leader>d oputs "#" * 90<c-m>Rails.logger.debug("DEBUG: ")<c-m>puts "#"
 " Browse open buffers
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>f :CtrlP<CR>
+
+"Have leader D just delete the line
+nmap <leader>d "_d
+
+" Make Y behave like other capitals
+map Y y$
