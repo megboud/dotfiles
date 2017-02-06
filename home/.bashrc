@@ -160,3 +160,7 @@ if [[ $OSTYPE = darwin* ]]; then
 fi
 
 export PATH="$HOME/.yarn/bin:$PATH"
+
+export GOPATH=$HOME
+export PATH=$GOPATH/bin:$PATH
+
