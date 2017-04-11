@@ -91,15 +91,6 @@ fi
 
 alias g='grep --color=always -rnI --exclude-dir=log'
 
-if [[ $OSTYPE = darwin* ]]; then
-  update_vagrant() {
-    cd ~/vagrant/ \
-      && git pull origin master \
-      && vagrant up \
-      && vagrant provision
-  }
-fi
-
 ##################### Ssh-agent launch
 
 source ~/.git-ssh-agent-launch.sh
@@ -138,7 +129,7 @@ if [[ $OSTYPE = darwin* ]]; then
   fi
 fi
 
-##################### PATH options
+##################### PATH modifications
 
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -160,7 +151,5 @@ if [[ $OSTYPE = darwin* ]]; then
 fi
 
 export PATH="$HOME/.yarn/bin:$PATH"
-
 export GOPATH=$HOME
 export PATH=$GOPATH/bin:$PATH
-
