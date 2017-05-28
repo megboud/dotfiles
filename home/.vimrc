@@ -183,9 +183,6 @@ ca t tabnew
 " %% gives you the current directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
-" Rails debug helper
-nnoremap <leader>o oputs "#" * 90<c-m>Rails.logger.debug("DEBUG: ")<c-m>puts "#" * 90<esc>
-
 " Browse open buffers
 nmap <leader>b :CtrlPBuffer<CR>
 nmap <leader>f :CtrlP<CR>
