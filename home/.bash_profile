@@ -25,6 +25,16 @@ alias gc='git checkout'
 alias bake='bin/rake'
 if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
 
+if [[ $OSTYPE = darwin* ]]; then
+  alias ll='ls -alFG'
+  alias la='ls -ACG'
+  alias ls='ls -CFG'
+elif [ $OSTYPE == 'linux-gnu' ]; then
+  alias ll='ls --color=auto -alF'
+  alias la='ls --color=auto -ACF'
+  alias ls='ls --color=auto -CF'
+fi
+
 export PRY=1
 export PATH=$PATH:/Users/meganboudreau/Library/Android/sdk/platform-tools/
 #export GOPATH=/Users/meganboudreau/go
@@ -33,5 +43,14 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 export GOROOT="/usr/local/Cellar/go/1.7.3/libexec/"
 #export PATH="$PATH:$GOPATH/bin"
 export PATH="$PATH:$GOROOT/bin"
+
+#Add RVM to PATH
+export PATH="$PATH:$HOME/.rvm/bin"
+export GOPATH="/Users/meganboudreau/go/"
+export PATH="$GOPATH/bin:$PATH"
+export PATH=$PATH:/Users/meganboudreau/Library/Android/sdk/platform-tools/
+export GOROOT="/usr/local/Cellar/go/1.7.3/libexec/"
+export PATH="$PATH:$GOROOT/bin"
+export PATH="$HOME/.yarn/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

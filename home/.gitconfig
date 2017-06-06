@@ -1,14 +1,36 @@
 [core]
-	editor = atom --wait
+  editor = atom --wait
 [push]
-	default = upstream
+  default = upstream
 [merge]
-	conflictstyle = diff3
+  conflictstyle = diff3
 [user]
-	name = Megan Boudreau
-	email = megan.boudreau@shopify.com
+  name = Megan Boudreau
+  email = megan.boudreau@shopify.com
 [alias]
-	co = checkout
-	ci = commit
-	st = status
-	br = branch
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  ap="add -p"
+  aa="add --all"
+  b="branch"
+  ba="branch --all"
+  bsort="for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
+  cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+  dc="diff --cached"
+  di="diff"
+  dim="diff origin/master"
+  dimn="diff --name-only origin/master"
+  com="checkout master"
+  cp="cherry-pick -n"
+  lg=log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  g=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph
+  ga=log --date-order --pretty='format:%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset' --graph --all
+  pl="pull"
+  ph="push"
+  rb="rebase"
+  rbm="rebase master"
+  rbc="rebase --continue"
+  st="status"
+  ss="status --short"
