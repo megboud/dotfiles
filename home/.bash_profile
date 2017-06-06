@@ -3,7 +3,6 @@
 # Enable tab completion
 source ~/.git-completion.bash
 source ~/.profile
-source ~/.rvm/scripts/rvm
 
 # colors!
 green="\[\033[0;32m\]"
@@ -36,4 +35,3 @@ export GOROOT="/usr/local/Cellar/go/1.7.3/libexec/"
 export PATH="$PATH:$GOROOT/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
