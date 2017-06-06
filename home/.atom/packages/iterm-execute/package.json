@@ -1,0 +1,97 @@
+{
+  "name": "iterm-execute",
+  "main": "./lib/iterm-execute",
+  "version": "0.2.0",
+  "description": "Sends MiniTest execute commands direct to iTerm (Alpha)",
+  "keywords": [],
+  "activationCommands": {
+    "atom-workspace": [
+      "iterm-execute:run-ruby-test",
+      "iterm-execute:run-ruby-current-line-test"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/celsodantas/iterm-execute.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "node-osascript": "1.0.2"
+  },
+  "readme": "# iTerm Execute package\n\nSends MiniTest execute commands direct to iTerm\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/celsodantas/iterm-execute/issues"
+  },
+  "homepage": "https://github.com/celsodantas/iterm-execute#readme",
+  "_id": "iterm-execute@0.2.0",
+  "_shasum": "d696d2daaf79871c2be3fb7a3a7053250d6d5f81",
+  "_resolved": "file:../d-116612-55538-wz78nt/package.tgz",
+  "_from": "../d-116612-55538-wz78nt/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "node-osascript",
+        "version": "1.0.2",
+        "path": "node_modules/node-osascript/lib/index.js"
+      },
+      {
+        "name": "buffers",
+        "version": "0.1.1",
+        "path": "node_modules/node-osascript/node_modules/buffers/index.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/iterm-execute.coffee"
+      ],
+      ".js": [
+        "node_modules/node-osascript/Gruntfile.js",
+        "node_modules/node-osascript/demos/externalFile/demo.js",
+        "node_modules/node-osascript/demos/injectvariables/demos.js",
+        "node_modules/node-osascript/demos/simpleDialog/dialog.js",
+        "node_modules/node-osascript/lib/index.js",
+        "node_modules/node-osascript/lib/osa-parser.js",
+        "node_modules/node-osascript/lib/osa-vargen.js",
+        "node_modules/node-osascript/node_modules/buffers/examples/slice.js",
+        "node_modules/node-osascript/node_modules/buffers/examples/splice.js",
+        "node_modules/node-osascript/node_modules/buffers/index.js"
+      ],
+      ".json": [
+        "node_modules/node-osascript/node_modules/buffers/package.json",
+        "node_modules/node-osascript/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "node-osascript": "1.0.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/node-osascript",
+          "node_modules/node-osascript/demos/externalFile",
+          "node_modules/node-osascript/demos/injectvariables",
+          "node_modules/node-osascript/demos/simpleDialog",
+          "node_modules/node-osascript/lib",
+          "node_modules/node-osascript/tests/independent",
+          "node_modules/node-osascript/tests"
+        ],
+        "dependencies": {
+          "buffers": "^0.1.1"
+        }
+      }
+    ]
+  }
+}
