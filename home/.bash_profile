@@ -13,10 +13,55 @@ reset="\[\033[0m\]"
 # Change command prompt
 source ~/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWSTASHSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWCOLORHINTS=1
+
+pluralize() {
+  if [ $2 -eq 1 -o $2 -eq -1 ]
+  then
+    echo ${1}
+  else
+    echo ${1}s
+  fi
+}
+
+time_since_last_commit() {
+  local now=`date +%s`
+  local last_commit=`git log --pretty=format:'%at' -1`
+  local seconds_since_last_commit=$((now - last_commit))
+  local d=$((seconds_since_last_commit/60/60/24))
+  local h=$((seconds_since_last_commit/60/60%24))
+  local m=$((seconds_since_last_commit/60%60))
+
+  if [[ $d > 0 ]]; then
+    echo $d $(pluralize "day" $d)
+  elif [[ $h > 0 ]]; then
+    echo $h $(pluralize "hour" $h)
+  elif [[ $m > 0 ]]; then
+    echo $m $(pluralize "min" $m)
+  else
+    echo $seconds_since_last_commit $(pluralize "second" $seconds_since_last_commit)
+  fi
+}
+
+git_prompt() {
+  local g="$(__gitdir)"
+  if [ -n "$g" ]; then
+    local SINCE_LAST_COMMIT="$(time_since_last_commit)${NORMAL}"
+    local GIT_PROMPT=`__git_ps1 "(%s|${SINCE_LAST_COMMIT})"`
+    echo ${GIT_PROMPT}
+  fi
+}
+
+PS1="$purple\u: $blue\w $green\$(git_prompt) \$ $reset"
+
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
-export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
+# export PS1="$purple\u$green\$(__git_ps1)$blue \W $ $reset"
 
 #aliases
 alias la='ls -a'
