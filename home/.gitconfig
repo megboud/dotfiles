@@ -1,17 +1,19 @@
 [core]
-  editor = atom --wait
+  editor = vim
+	excludesfile = /Users/meganboudreau/.gitignore_global
 [push]
   default = upstream
 [merge]
   conflictstyle = diff3
 [user]
-  name = Megan Boudreau
-  email = megan.boudreau@shopify.com
+	name = Megan Boudreau
+	email = megan.boudreau@shopify.com
 [alias]
   co = checkout
   ci = commit
   st = status
   br = branch
+  gs = status
   ap="add -p"
   aa="add --all"
   b="branch"
@@ -32,5 +34,16 @@
   rb="rebase"
   rbm="rebase master"
   rbc="rebase --continue"
-  st="status"
   ss="status --short"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/meganboudreau/.stCommitMsg
+[diff]
+	algorithm = patience
+[protocol]
+	version = 2

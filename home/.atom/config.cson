@@ -1,5 +1,9 @@
 "*":
-  core: {}
+  core:
+    disabledPackages: [
+      "pretty-json"
+    ]
+    telemetryConsent: "no"
   "custom-title":
     template: "<%= fileName %><% if (filePath) { %> - <%= filePath %><% } %>"
   editor:
