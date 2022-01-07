@@ -1,0 +1,36 @@
+[core]
+  editor = vim
+	excludesfile = /Users/meganboudreau/.gitignore_global
+	commitGraph = true
+[user]
+	name = megboud
+	email = megan.boudreau@shopify.com
+[diff]
+	algorithm = patience
+[protocol]
+	version = 2
+[push]
+	default = upstream
+[pull]
+	rebase = true
+[merge]
+	conflictstyle = diff3
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  gs = status
+  ap="add -p"
+  aa="add --all"
+  b="branch"
+  ba="branch --all"
+[gc]
+	writeCommitGraph = true
+[url "https://github.com/Shopify/"]
+	insteadOf = git@github.com:Shopify/
+	insteadOf = git@github.com:shopify/
+	insteadOf = ssh://git@github.com/Shopify/
+	insteadOf = ssh://git@github.com/shopify/
+[credential]
+	helper = store --file /opt/dev/var/private/git_credential_store
