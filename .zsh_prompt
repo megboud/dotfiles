@@ -205,8 +205,15 @@ sexy_bash_prompt_parse_git_behind () {
 }
 
 function sexy_bash_prompt_parse_git_dirty() {
-  # If the git status has *any* changes (e.g. dirty), echo our character
-  if [[ -n "$(git status --porcelain 2> /dev/null)" ]]; then
+  # if the git diff has unstaged changes
+  if [[ $(git diff --exit-code) ]]; then
+    echo 1
+  fi
+}
+
+function has_staged_changes() {
+  # if the git diff has staged changes
+  if [[ $(git diff --cached --exit-code) ]]; then
     echo 1
   fi
 }
@@ -218,27 +225,37 @@ function sexy_bash_prompt_is_on_git() {
 function sexy_bash_prompt_get_git_status() {
   # Grab the git dirty and git behind
   dirty_branch="$(sexy_bash_prompt_parse_git_dirty)"
+  staged_changes="$(has_staged_changes)"
   branch_ahead="$(sexy_bash_prompt_parse_git_ahead)"
   branch_behind="$(sexy_bash_prompt_parse_git_behind)"
 
-  # Iterate through all the cases and if it matches, then echo
-  if [[ "$dirty_branch" == 1 && "$branch_ahead" == 1 && "$branch_behind" == 1 ]]; then
-    echo "$sexy_bash_prompt_dirty_unpushed_unpulled_symbol"
-  elif [[ "$branch_ahead" == 1 && "$branch_behind" == 1 ]]; then
-    echo "$sexy_bash_prompt_unpushed_unpulled_symbol"
-  elif [[ "$dirty_branch" == 1 && "$branch_ahead" == 1 ]]; then
-    echo "$sexy_bash_prompt_dirty_unpushed_symbol"
-  elif [[ "$branch_ahead" == 1 ]]; then
-    echo "$sexy_bash_prompt_unpushed_symbol"
-  elif [[ "$dirty_branch" == 1 && "$branch_behind" == 1 ]]; then
-    echo "$sexy_bash_prompt_dirty_unpulled_symbol"
-  elif [[ "$branch_behind" == 1 ]]; then
-    echo "$sexy_bash_prompt_unpulled_symbol"
-  elif [[ "$dirty_branch" == 1 ]]; then
-    echo "$sexy_bash_prompt_dirty_synced_symbol"
-  else # clean
-    echo "$sexy_bash_prompt_synced_symbol"
+  local unstagedChanges=""
+  local stagedChanges=""
+  local branchAhead=""
+  local branchBehind=""
+
+  # Uncomment to add branch behind functionality
+  # if [[ "$branch_behind" == 1 ]]; then
+  #  branchBehind="$sexy_bash_prompt_unpulled_symbol"
+  # fi
+
+  # If the branch has committed, unpushed changes
+  if [[ "$branch_ahead" == 1 ]]; then
+    branchAhead="$sexy_bash_prompt_unpushed_symbol"
   fi
+
+  # if the branch has unstaged changes
+  if [[ "$dirty_branch" == 1 ]]; then
+    unstagedChanges="$sexy_bash_prompt_dirty_synced_symbol"
+  fi
+
+# if the branch has staged changes
+  if [[ "$staged_changes" == 1 ]]; then
+    stagedChanges="$sexy_bash_prompt_dirty_synced_staged_symbol"
+  fi
+
+  #return the final output
+  echo "$unstagedChanges$stagedChanges$branchAhead$branchBehind"
 }
 
 sexy_bash_prompt_get_git_info () {
