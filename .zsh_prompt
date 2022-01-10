@@ -232,7 +232,6 @@ function sexy_bash_prompt_get_git_status() {
   local unstagedChanges=""
   local stagedChanges=""
   local branchAhead=""
-  local branchBehind=""
 
   # Uncomment to add branch behind functionality
   # if [[ "$branch_behind" == 1 ]]; then
@@ -254,8 +253,13 @@ function sexy_bash_prompt_get_git_status() {
     stagedChanges="$sexy_bash_prompt_dirty_synced_staged_symbol"
   fi
 
-  #return the final output
-  echo "$unstagedChanges$stagedChanges$branchAhead$branchBehind"
+  local result="$unstagedChanges$stagedChanges$branchAhead"
+  
+  if [ -z "$result" ]; then
+    echo ""
+  else 
+    echo "$result"
+  fi
 }
 
 sexy_bash_prompt_get_git_info () {
@@ -264,14 +268,11 @@ sexy_bash_prompt_get_git_info () {
 
   # If there are any branches
   if [[ "$branch" != "" ]]; then
+    local op="("
+    local cp=")"
+
     # Echo the branch
-    output="$branch"
-
-    # Add on the git status
-    output="$output $(sexy_bash_prompt_get_git_status)"
-
-    # Echo our output
-    echo "$output"
+    echo "$op$branch$(sexy_bash_prompt_get_git_status)$cp"
   fi
 }
 
@@ -280,9 +281,9 @@ PS1="%{$sexy_bash_prompt_reset%}\
 %{$sexy_bash_prompt_user_color%}%n%{$sexy_bash_prompt_reset%} \
 %{$sexy_bash_prompt_dir_color%}%d%{$sexy_bash_prompt_reset%}\
 \$( sexy_bash_prompt_is_on_git && \
-  echo -n \" %{$sexy_bash_prompt_git_status_color%}(%{$sexy_bash_prompt_reset%}\" && \
+  echo -n \" %{$sexy_bash_prompt_git_status_color%}%{$sexy_bash_prompt_reset%}\" && \
   echo -n \"%{$sexy_bash_prompt_git_status_color%}\$(sexy_bash_prompt_get_git_info)\" && \
-  echo -n \"%{$sexy_bash_prompt_git_status_color%})%{$sexy_bash_prompt_reset%}\" && \
+  echo -n \"%{$sexy_bash_prompt_git_status_color%}%{$sexy_bash_prompt_reset%}\" && \
   echo -n \"%{$sexy_bash_prompt_git_progress_color%}\$(sexy_bash_prompt_get_git_progress)\" && \
   echo -n \"%{$sexy_bash_prompt_reset%}\")"$'\n'"\
 %{$sexy_bash_prompt_symbol_color%}$sexy_bash_prompt_symbol %{$sexy_bash_prompt_reset%}"
